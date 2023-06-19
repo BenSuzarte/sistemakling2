@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/crud.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://kit.fontawesome.com/108281d3fc.js" crossorigin="anonymous"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Relação de Usuários</title>
+</head>
+
+<body>
+
+<!-- Cabeçalho -->
+<header>
+  <nav>
+    <a class="logo" href="/index-gerente">KLING</a>
+    <ul class="nav-list">
+      <li><a href="/index-gerente">Chamados</a></li>
+      <li><a href="/user-crud">Cadastros</a></li>
+      <li><a href="/salas-crud">Salas</a></li>
+      <li><button class="material-symbols-outlined" id="btnModal">account_circle</button></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Modal-->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <i class="fa-regular fa-circle-user fa-5x"></i>
+    <h2>Informações do Usuário</h2>
+    <p>Nome: Rafael Abreu</p>
+    <p>Email: kling@example.com</p>
+    <p>Telefone: 71</p>
+  </div>
+</div>
+
+<h1>Usuários</h1>
+<!-- CRUD -->
+
+
+<form action="/gerente/usuarios-cadastrar" method="post">
+  <label for="m-funcao">Função</label>
+  <select name="funcao" id="">
+    <option value="PROFESSOR">PROFESSOR</option>
+    <option value="TECNICO">TÉCNICO</option>
+    <option value="GERENTE">GERENTE</option>
+  </select>
+
+  <label for="m-nome">Nome</label>
+  <input name="nome" type="text" required />
+
+  <label for="m-email">Email</label>
+  <input name="email" type="text" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder='kling@exemplo.com'>
+
+  <label for="m-salario">Telefone</label>
+  <input name="telefone" type="tel" required placeholder="(xx) xxxxx-xxxx">
+  <button type="submit" id="btnSalvar">Salvar</button>
+</form>
+
+<div class="divTable">
+  <table>
+    <thead>
+      <tr>
+        <th>Função</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th class="acao">Editar</th>
+        <th class="acao">Excluir</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% usuarios.forEach(function(usuario) { %>
+        <tr>
+          <td><%= usuario.funcao %></td>
+          <td><%= usuario.nome %></td>
+          <td><%= usuario.email %></td>
+          <td><%= usuario.telefone %></td>
+          <td><i class='bx bxs-pencil'></i></td>
+          <td><i class='bx bxs-trash-alt' style='color:#ff0004'></i></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<script src="../services/gerente/usuarioCrud_service.js"></script>
+</body>
+</html>

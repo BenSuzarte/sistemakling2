@@ -1,0 +1,143 @@
+/* Define a font size média para todos os elementos */
+/*{
+    font-size: medium;
+}*/
+
+/* Estilos para a tag h1 */
+h1 {
+    color: #000;
+    margin: 25px;
+    text-align: center;
+}
+
+/* Estilos para a classe .CRUD */
+.CRUD {
+    display: flex;
+    align-items: center;
+    background-color: #F8F8FF;
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* Estilos para a tabela dentro da classe .CRUD */
+.CRUD table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+/* Estilos para as células de cabeçalho, células e linhas da tabela */
+.CRUD th,
+.CRUD td,
+.CRUD tr {
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Estilos para a primeira linha da tabela */
+table tr:nth-child(1) {
+    background-color: #f2f2f2;
+}
+
+/* Estilos para os campos de entrada de texto */
+.CRUD input[type='text'],
+.CRUD input[type='email'],
+.CRUD select{
+    height: 40px;
+    width: 200px;
+    background-color: #F0F8FF;
+    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+    border: black 1px solid;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Estilos para o botão de envio do formulário */
+.CRUD input[type='submit'] {
+    height: 40px;
+    width: 100px;
+    background-color: #A9A9A9;
+    border: black 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos de hover para o botão de envio do formulário */
+.CRUD input[type='submit']:hover {
+    background-color: #A9A9A9;
+    transform: scale(1.01);
+}
+
+/* Estilos para a última célula de cabeçalho e célula da tabela */
+.CRUD th:last-child,
+td:last-child {
+    border-right: none;
+}
+
+/* Estilos para o botão "addCRUD" */
+.addCRUD {
+    background-color: #6495ED;
+    color: #fff;
+    border: black 1px solid;
+    border-radius: 8px;
+    height: 35px;
+    width: 150px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Estilos para o botão "editCRUD" */
+.editCRUD {
+    background-color: #A9A9A9;
+    color: #fff;
+    border: black 1px solid;
+    border-radius: 8px;
+    height: 35px;
+    width: 72px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Estilos para o botão "confirmCRUD" */
+.confirmCRUD {
+    background-color: #3CB371;
+    color: #fff;
+    border: black 1px solid;
+    border-radius: 8px;
+    height: 35px;
+    width: 72px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Estilos para o botão "deleteCRUD" */
+.deleteCRUD {
+    background-color: #FF0000;
+    color: #fff;
+    border: black 1px solid;
+    border-radius: 8px;
+    height: 35px;
+    width: 72px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Estilos de hover para o botão "addCRUD" */
+.addCRUD:hover {
+    background-color: #ADD8E6;
+    transform: scale(1.01);
+}
+
+/* Estilos de hover para o botão "editCRUD" */
+.editCRUD:hover {
+    background-color: #D3D3D3;
+    transform: scale(1.01);
+}
+
+/* Estilos de hover para o botão "deleteCRUD" */
+.deleteCRUD:hover {
+    background-color: #FF6347;
+    transform: scale(1.01);
+}

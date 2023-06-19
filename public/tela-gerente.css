@@ -1,0 +1,72 @@
+/* Estilos para a classe .screenChamados */
+section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.screen-chamados {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    max-height: 55vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 10px;
+    overflow: auto;
+}
+
+.screen-chamados > div {
+    display: grid;
+}
+
+section h2 {
+    grid-area: auto;
+}
+
+/* Estilos para a classe .chamado dentro de .screenChamados */
+.screen-chamados .chamado {
+    display: flex;
+    justify-content: space-around;
+    background-color: #F8F8FF;
+    width: 90%;
+    height: 15%;
+    border: 3px solid #000;
+    border-radius: 20px;
+    margin-top: 20px;
+    text-align: left;
+    padding: 30px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Estilos de hover para os botões dentro de .options-chamado */
+.chamado .options-chamado button:hover {
+    background-color: #9ACD32;
+}
+
+/* Estilos para a classe .description dentro de .text-chamado */
+.screen-chamados .text-chamado .description {
+    font-size: small;
+    font-style: italic;
+}
+
+/* Personaliza a aparência do scroll lateral */
+.screen-chamados::-webkit-scrollbar {
+    width: 8px; /* Largura do scroll lateral */
+}
+
+/* Estilos para o thumb do scroll lateral */
+.screen-chamados::-webkit-scrollbar-thumb {
+    background-color: #ADD8E6; /* Cor do scroll lateral */
+    border-radius: 4px; /* Formato do scroll lateral */
+}
+
+/* Estilos para a classe .detalhe */
+.detalhar {
+    color: #000;
+}
+
+.detalhamento{
+    display: none;
+}

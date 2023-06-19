@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/login.css">
+	<title>Login Kling</title>
+</head>
+<body>
+	<div class="tela-login">
+		<form action="/login" class='form-login' method="post" novalidate>
+
+				<h1>Login</h1>
+					<div class='campo-input'>
+						<label for="email"> Email
+							<input type="email" id="email" name="email" placeholder='kling@exemplo.com'
+							pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+						</label>
+					</div>
+
+				<div class='campo-input'>
+					<label for="senha"> Senha
+						<input type="password" id="senha" name="senha" required placeholder='********'>
+					</label>
+				</div>
+
+				<a class="redefine-senha" href="./redefinir-senha"> Esqueci minha senha </a>
+				
+				<div class="error">
+					<span>Email/Senha incorretos</span>
+				</div>
+
+				<input type='submit' value='Enviar' id="btnLogin"/>
+		</form>
+	</div>
+</body>
+</html>
