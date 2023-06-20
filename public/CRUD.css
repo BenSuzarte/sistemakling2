@@ -19,6 +19,8 @@ h1 {
     margin: 0 auto;
 }
 
+/* Estilos para o formulário dentro da classe .CRUD */
+
 /* Estilos para a tabela dentro da classe .CRUD */
 .CRUD table {
     width: 100%;
@@ -41,7 +43,7 @@ table tr:nth-child(1) {
 
 /* Estilos para os campos de entrada de texto */
 .CRUD input[type='text'],
-.CRUD input[type='email'],
+.CRUD input[type='tel'],
 .CRUD select{
     height: 40px;
     width: 200px;
@@ -52,22 +54,6 @@ table tr:nth-child(1) {
     border: black 1px solid;
     text-align: center;
     font-weight: bold;
-}
-
-/* Estilos para o botão de envio do formulário */
-.CRUD input[type='submit'] {
-    height: 40px;
-    width: 100px;
-    background-color: #A9A9A9;
-    border: black 1px solid;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Estilos de hover para o botão de envio do formulário */
-.CRUD input[type='submit']:hover {
-    background-color: #A9A9A9;
-    transform: scale(1.01);
 }
 
 /* Estilos para a última célula de cabeçalho e célula da tabela */

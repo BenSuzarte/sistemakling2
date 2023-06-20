@@ -43,7 +43,7 @@
 <!-- CRUD -->
 
 
-<form action="/gerente/usuarios-cadastrar" method="post">
+<form action="/gerente/usuarios-cadastrar" method="post" class="CRUD">
   <label for="m-funcao">Função</label>
   <select name="funcao" id="">
     <option value="PROFESSOR">PROFESSOR</option>
@@ -59,10 +59,10 @@
 
   <label for="m-salario">Telefone</label>
   <input name="telefone" type="tel" required placeholder="(xx) xxxxx-xxxx">
-  <button type="submit" id="btnSalvar">Salvar</button>
+  <button type="submit" id="btnSalvar" class="addCRUD">Salvar</button>
 </form>
 
-<div class="divTable">
+<div class="CRUD">
   <table>
     <thead>
       <tr>
@@ -81,8 +81,8 @@
           <td><%= usuario.nome %></td>
           <td><%= usuario.email %></td>
           <td><%= usuario.telefone %></td>
-          <td><i class='bx bxs-pencil'></i></td>
-          <td><i class='bx bxs-trash-alt' style='color:#ff0004'></i></td>
+          <td><button class="editCRUD">Editar</button></td>
+          <td><button class="deleteCRUD">Excluir</button></td>
         </tr>
       <% }); %>
     </tbody>
