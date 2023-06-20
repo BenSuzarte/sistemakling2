@@ -12,11 +12,13 @@
   const UserService = require('./services/usuario/usuarioLogin_service');
   const UsuarioCrudService = require('./services/gerente/usuarioCrud_service');
   const ChamadoOpcoesService = require('./services/chamado/chamadoOpcoes_service');
+  const ChamadoEnviarService = require('./services/chamado/chamadoEnviar_service')
 
 //Instâncias
   const usuarioService = new UserService()
   const usuarioCrud = new UsuarioCrudService()
   const chamadoOpcoesService = new ChamadoOpcoesService()
+  const chamadoEnviarService = new ChamadoEnviarService()
 
 //Global
 let idUsuario
@@ -91,6 +93,17 @@ let idUsuario
 
     app.post('/professor/novo-chamado', (req, res) => {
 
+      chamadoEnviarService.chamadoEnviar(
+        req.body.setor,
+        req.body.bloco,
+        req.body.sala,
+        req.body.aparelho,
+        req.body.numero,
+        req.body.descricao,
+        idUsuario
+      )
+
+      res.redirect('/professor/novo-chamado')
     })
 
     app.post('/gerente/usuarios-cadastrar', (req, res) => {

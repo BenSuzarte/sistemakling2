@@ -42,57 +42,53 @@
 
     <!-- Formulário para registrar o chamado-->
     <form action="/professor/novo-chamado" method="post">
+
       <div class="div-form">
-        <label for="category">Setor *</label>
-        <select name="category" id="category">
+        <label for="setor">Setor *</label>
+        <select name="setor" id="setor">
           <option value="">-- Selecionar --</option>
           <% setores.forEach(function(setor) { %>
-            <option value=""><%= setor.setor %></option>
+            <option value="<%= setor.setor %>"><%= setor.setor %></option>
           <% }); %>
         </select>
 
         <div style="display: inherit; gap: 45px;">
           <div style="display: inherit; flex-direction: column">
-            <label for="block">Bloco *</label>
-            <select name="block" id="block" style="width: 250px;">
+            <label for="bloco">Bloco *</label>
+            <select name="bloco" id="bloco" style="width: 250px;">
               <option value="">-- Selecionar --</option>
               <% blocos.forEach(function(bloco) { %>
-                <option value=""><%= bloco.bloco %></option>
+                <option value="<%= bloco.bloco %>"><%= bloco.bloco %></option>
               <% }); %>
             </select>
           </div>
 
           <div style="display: inherit; flex-direction: column">
             <!-- Input para Sala -->
-            <label for="class">Sala *</label>
-            <input type="number" name="class" id="class" style="width: 150px;">
+            <label for="sala">Sala *</label>
+            <input type="number" name="sala" id="sala" style="width: 150px;">
           </div>
         </div>
 
-
-
-
-
-
         <div style="display: inherit; gap: 45px;">
           <div style="display: inherit; flex-direction: column">
-            <label for="app">Aparelho *</label>
-            <select name="app" id="app" style="width: 250px;">
+            <label for="aparelho">Aparelho *</label>
+            <select name="aparelho" id="aparelho" style="width: 250px;">
               <option value="">-- Selecionar --</option>
               <% aparelhos.forEach(function(aparelho) { %>
-                <option value=""><%= aparelho.aparelho %></option>
+                <option value="<%= aparelho.aparelho %>"><%= aparelho.aparelho %></option>
               </select>
               <% }); %>
           </div>
 
           <div style="display: inherit; flex-direction: column">
             <!-- Input para Quantidade -->
-            <label for="quantidade">Quantidade *</label>
-            <input type="number" name="quantidade" id="quantidade" style="width: 150px;"/> 
+            <label for="numero">Número *</label>
+            <input type="number" name="numero" id="numero" style="width: 150px;"/> 
           </div>
         </div>
 
-        <textarea name="" id="" cols="100" rows="10" placeholder="Descreva seu problema"></textarea>
+        <textarea name="descricao" id="descricao" cols="100" rows="10" placeholder="Descreva seu problema"></textarea>
 
         <div class="error">
           <p>Todos os campos em * são obrigatórios</p>
