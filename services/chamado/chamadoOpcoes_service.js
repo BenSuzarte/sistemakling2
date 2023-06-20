@@ -1,19 +1,44 @@
 const db = require('../../connection/database')
 
 class ChamadoOpcoesService {
-  async carregarSetores() {
-    try {
-      const query = 'SELECT setor FROM Setor';
+  carregarSetores() {
+    return new Promise((resolve, reject) => {
+      db.conn.query('SELECT setor FROM Setor', (error, results) => {
+        if (error) {
+          reject(error);
+          throw error;
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  }
 
-      const [rows] = await db.conn.promise().query(query);
-      return rows
+  carregarBlocos() {
+    return new Promise((resolve, reject) => {
+      db.conn.query('SELECT bloco FROM Endereco', (error, results) => {
+        if (error) {
+          reject(error);
+          throw error;
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  }
 
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
+  carregarAparelhos() {
+    return new Promise((resolve, reject) => {
+      db.conn.query('SELECT aparelho FROM Aparelho', (error, results) => {
+        if (error) {
+          reject(error);
+          throw error;
+        } else {
+          resolve(results);
+        }
+      });
+    });
   }
 }
 
-const chamadoOpcoesService = new ChamadoOpcoesService()
-chamadoOpcoesService.carregarSetores();
+module.exports = ChamadoOpcoesService;

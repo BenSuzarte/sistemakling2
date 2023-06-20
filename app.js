@@ -11,10 +11,12 @@
 //Services
   const UserService = require('./services/usuario/usuarioLogin_service');
   const UsuarioCrudService = require('./services/gerente/usuarioCrud_service');
+  const ChamadoOpcoesService = require('./services/chamado/chamadoOpcoes_service');
 
 //Instâncias
   const usuarioService = new UserService()
   const usuarioCrud = new UsuarioCrudService()
+  const chamadoOpcoesService = new ChamadoOpcoesService()
 
 //Global
 let idUsuario
@@ -44,6 +46,10 @@ let idUsuario
 
 //Rotas
   //GETs
+    app.get('/login', (req, res) => {
+      res.render('login')
+    })
+
     app.get('/gerente/usuarios', async (req, res) => {
       try {
         const results = await usuarioCrud.carregarUsuarios();
@@ -54,8 +60,15 @@ let idUsuario
       }
     });
 
-    app.get('/professor/novo-chamado', (req, res) => {
-      res.render('professor-novo-chamado');
+    app.get('/professor/novo-chamado', async (req, res) => {
+      const resultsSetores = await chamadoOpcoesService.carregarSetores()
+      const resultsBlocos = await chamadoOpcoesService.carregarBlocos()
+      const resultsAparelhos = await chamadoOpcoesService.carregarAparelhos()
+      res.render('professor-novo-chamado', { setores: resultsSetores, blocos: resultsBlocos, aparelhos: resultsAparelhos });
+    })
+
+    app.get('/tecnico', (req, res) => {
+      res.render('tecnico-principal')
     })
 
   //POSTs
@@ -67,7 +80,7 @@ let idUsuario
         if (usuarioFuncao === 'PROFESSOR') {
           res.redirect('/professor/novo-chamado')
         } else if (usuarioFuncao === 'GERENTE') {
-          //res.redirect('/gerente')
+          res.redirect('/gerente/usuarios')
         } else if (usuarioFuncao === 'TECNICO') {
           //res.redirect('/tecnico')
         }

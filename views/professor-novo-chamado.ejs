@@ -46,16 +46,17 @@
         <label for="category">Setor *</label>
         <select name="category" id="category">
           <option value="">-- Selecionar --</option>
-          <option value="">Informática</option>
-          <option value="">Manutenção</option>
+          <% setores.forEach(function(setor) { %>
+            <option value=""><%= setor.setor %></option>
+          <% }); %>
         </select>
 
         <label for="block">Bloco *</label>
         <select name="block" id="block">
           <option value="">-- Selecionar --</option>
-          <option value="">Bloco A</option>
-          <option value="">Bloco B</option>
-          <option value="">Bloco C</option>
+          <% blocos.forEach(function(bloco) { %>
+            <option value=""><%= bloco.bloco %></option>
+          <% }); %>
         </select>
 
         <label for="class">Sala *</label>
@@ -68,8 +69,9 @@
         <label for="app">Aparelho *</label>
         <select name="app" id="app">
           <option value="">-- Selecionar --</option>
-          <option value="">Computador</option>
-          <option value="">Datashow</option>
+          <% aparelhos.forEach(function(aparelho) { %>
+            <option value=""><%= aparelho.aparelho %></option>
+          <% }); %>
         </select>
 
         <textarea name="" id="" cols="100" rows="10" placeholder="Descreva seu problema"></textarea>
