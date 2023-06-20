@@ -63,8 +63,7 @@ main {
 footer {
   position: fixed;
   bottom: 0; 
-  height: 10vw; 
-  padding-bottom: 25px;
+  height: 10vw;
   width: 100vw; 
   background-color: #4169E1; 
   color: #fff;
@@ -73,7 +72,7 @@ footer {
 /* Estilos para o título do rodapé */
 footer h3 {
   text-align: center; 
-  margin: 5.5px; 
+  margin: 30px; 
 }
 
 /* Estilos para a lista do rodapé */
