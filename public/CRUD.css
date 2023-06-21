@@ -20,6 +20,13 @@ h1 {
 }
 
 /* Estilos para o formulário dentro da classe .CRUD */
+.div-form{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+}
 
 /* Estilos para a tabela dentro da classe .CRUD */
 .CRUD table {
