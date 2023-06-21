@@ -12,13 +12,15 @@
   const UserService = require('./services/usuario/usuarioLogin_service');
   const UsuarioCrudService = require('./services/gerente/usuarioCrud_service');
   const ChamadoOpcoesService = require('./services/chamado/chamadoOpcoes_service');
-  const ChamadoEnviarService = require('./services/chamado/chamadoEnviar_service')
+  const ChamadoEnviarService = require('./services/chamado/chamadoEnviar_service');
+  const CarregarChamados = require('./services/chamado/carregarChamado_service');
 
 //Instâncias
   const usuarioService = new UserService()
   const usuarioCrud = new UsuarioCrudService()
   const chamadoOpcoesService = new ChamadoOpcoesService()
   const chamadoEnviarService = new ChamadoEnviarService()
+  const carregarChamados = new CarregarChamados();
 
 //Global
 let idUsuario
@@ -69,6 +71,11 @@ let idUsuario
       res.render('professor-novo-chamado', { setores: resultsSetores, blocos: resultsBlocos, aparelhos: resultsAparelhos });
     })
 
+    app.get('/professor/meus-chamados', async (req, res) => {
+      const results = await carregarChamados.carregarChamadosProfessor(2)
+      res.render('chamados-professor', { results: results })
+    })
+
     app.get('/tecnico', (req, res) => {
       res.render('tecnico-principal')
     })
@@ -103,7 +110,7 @@ let idUsuario
         idUsuario
       )
 
-      res.redirect('/professor/novo-chamado')
+      res.redirect('/professor/meus-chamados')
     })
 
     app.post('/gerente/usuarios-cadastrar', (req, res) => {
