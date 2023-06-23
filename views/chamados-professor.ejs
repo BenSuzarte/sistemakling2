@@ -46,7 +46,7 @@
       <% results.forEach(function(result) { %>
         <div class="chamado">
           <div class="text-chamado">
-            <span class="titulo"><%= result.idAparelho %> : CHAMADA NO BLOCO , SALA </span>
+            <span class="titulo"><%= result.idAparelho.toUpperCase() %>: CHAMADA NO BLOCO <%= result.idEndereco %>, SALA <%= result.sala %></span>
           </div>
           <a class="detalhar" href="#">Leia mais...</a>
           <span class="detalhamento">

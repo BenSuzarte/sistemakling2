@@ -9,6 +9,10 @@ class CarregarChamados {
           reject(error)
           throw error
         } else {
+          for(let i=0; i<results.length; i++) {
+            results[i].idAparelho = await this.requisitarNomeDoAparelho(results[i].idAparelho)
+            results[i].idEndereco = await this.requisitarNomeDoBloco(results[i].idEndereco)
+          }
           resolve(results)
         }
       })
@@ -37,7 +41,7 @@ class CarregarChamados {
           reject(error)
           throw error
         } else {
-          resolve(results[0].idEndereco)
+          resolve(results[0].bloco)
         }
       })
     })
