@@ -72,12 +72,17 @@ let idUsuario
     })
 
     app.get('/professor/meus-chamados', async (req, res) => {
-      const results = await carregarChamados.carregarChamadosProfessor(2)
+      const results = await carregarChamados.carregarChamados(idUsuario)
       res.render('chamados-professor', { results: results })
     })
 
-    app.get('/tecnico', (req, res) => {
-      res.render('tecnico-principal')
+    app.get('/tecnico', async (req, res) => {
+      const results = await carregarChamados.carregarChamadosTecnico()
+      res.render('tecnico-principal', { results: results })
+    })
+
+    app.get('/tecnico/finalizar-chamado', (req, res) => {
+      res.render('finalizar-chamado')
     })
 
   //POSTs
@@ -91,7 +96,7 @@ let idUsuario
         } else if (usuarioFuncao === 'GERENTE') {
           res.redirect('/gerente/usuarios')
         } else if (usuarioFuncao === 'TECNICO') {
-          //res.redirect('/tecnico')
+          res.redirect('/tecnico')
         }
       } else {
         console.log('Erro de autenticação!!!')

@@ -1,13 +1,29 @@
 const db = require('../../connection/database')
 
 class CarregarChamados {
-  carregarChamadosProfessor(idUsuario) {
+  carregarChamados(idUsuario) {
     return new Promise((resolve, reject) => {
       db.conn.query('SELECT idAparelho, idEndereco, sala, descricao FROM Chamado WHERE idUsuario = ?', [idUsuario],
       async (error, results) => {
         if(error) {
           reject(error)
           throw error
+        } else {
+          for(let i=0; i<results.length; i++) {
+            results[i].idAparelho = await this.requisitarNomeDoAparelho(results[i].idAparelho)
+            results[i].idEndereco = await this.requisitarNomeDoBloco(results[i].idEndereco)
+          }
+          resolve(results)
+        }
+      })
+    })
+  }
+
+  carregarChamadosTecnico() {
+    return new Promise((resolve, reject) => {
+      db.conn.query('SELECT * FROM Chamado', async (err, results) => {
+        if(err) {
+          reject(err)
         } else {
           for(let i=0; i<results.length; i++) {
             results[i].idAparelho = await this.requisitarNomeDoAparelho(results[i].idAparelho)

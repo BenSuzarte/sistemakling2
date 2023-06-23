@@ -41,15 +41,17 @@
   <section class="screen-chamados">
     <!-- Aqui será apresentado todos os chamados abertos -->
     <h2>Chamados Abertos</h2>
+    <% results.forEach(function(result) { %>
       <div class="chamado">
         <div class="info-chamado">
-          <span class="titulo">COMPUTADOR: CHAMADA NO BLOCO A, SALA 03</span>
-          <a class="finalizar-chamado" href="/finalizar-chamado">Finalizar Chamado</a>
+          <span class="titulo"><%= result.idAparelho.toUpperCase() %>: CHAMADA NO BLOCO <%= result.idEndereco %>, SALA <%= result.sala %></span>
+          <a class="finalizar-chamado" href="/tecnico/finalizar-chamado">Finalizar Chamado</a>
         </div>
         <span class="detalhes">
-          <p>detalhamento: detalhes...</p>
+          <p>Descrição: <%= result.descricao %></p>
         </span>
       </div>
+    <% }); %>
 
       
   </section>
