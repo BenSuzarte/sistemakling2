@@ -1,0 +1,79 @@
+/* Estilos para a classe .screen-chamados */
+.screen-chamados {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    max-height: 55vh;
+    margin: auto;
+    overflow: auto;
+}
+
+/* Estilos para a classe .chamado dentro de .screen-chamados */
+.screen-chamados .chamado {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #F8F8FF;
+    width: 90%;
+    height: 5vw;
+    border: 3px solid #000;
+    border-radius: 20px;
+    margin-top: 20px;
+    text-align: left;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* Estilos de hover para os botões dentro de .options-chamado */
+.chamado .options-chamado button:hover {
+    background-color: #9ACD32;
+}
+
+/* Estilos para a classe .text-chamado dentro de .screen-chamados*/
+.screen-chamados .info-chamado{
+    display: inherit;
+    flex-direction: row;
+}
+
+/* Estilos para a classe .description dentro de .text-chamado */
+.screen-chamados .info-chamado .description {
+    font-size: small;
+    font-style: italic;
+}
+
+/* Personaliza a aparência do scroll lateral */
+.screen-chamados::-webkit-scrollbar {
+    width: 8px; /* Largura do scroll lateral */
+}
+
+/* Estilos para o thumb do scroll lateral */
+.screen-chamados::-webkit-scrollbar-thumb {
+    background-color: #ADD8E6; /* Cor do scroll lateral */
+    border-radius: 4px; /* Formato do scroll lateral */
+}
+
+/* Estilos para a classe .detalhe */
+.detalhes {
+    color: #000;
+}
+
+.finalizar-chamado {
+    display: inherit;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #228B22;
+    border: none;
+    width: 20vh;
+    height: 4vh;
+    border-radius: 5px;
+    margin-left: 60px;
+    cursor: pointer;
+    border: black 1px solid;
+    font-size: large;
+}
+
+.finalizar-chamado:hover {
+    transform: scale(1.05);
+    opacity: 0.7;
+}

@@ -1,0 +1,165 @@
+/* Estilos para a classe .div-form */
+.div-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilos para a tag label */
+label {
+    font-size: 25px;
+}
+
+/* Estilos para o select dentro da classe .div-form */
+.div-form select {
+    height: 45px;
+    width: 23.5%;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #000;
+    text-align: center;
+    font-size: medium;
+    outline: none; /* Tira as bordas */
+}
+
+.div-form input[type="number"] {
+    height: 45px;
+    width: 100px;
+    box-sizing: border-box;
+    border: black 1px solid;
+    border-radius: 5px;
+    color: #000;
+    text-align: center;
+    font-size: medium;
+    outline: none; /* Tira as bordas */
+}
+
+/* Estilos para o botão de envio do formulário dentro da classe .div-form */
+.div-form input[type='submit'] {
+    color: #fff;
+    background-color: #6495ED;
+    height: 45px;
+    width: 120px;
+    border-radius: 10px;
+    font-size: larger;
+}
+
+/* Estilos de hover para o botão de envio do formulário dentro da classe .div-form */
+.div-form input[type='submit']:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+/* Estilos para o placeholder do input */
+::-webkit-input-placeholder {
+    color: #777777;
+}
+
+input::-moz-placeholder {
+    color: #777777;
+}
+
+/* classe erro */
+.error{
+    display: none;
+    color: #ff0000;
+    font-size: medium;
+}
+
+/* Estilos para a tag textarea */
+textarea {
+    color: #272626;
+    border-radius: 5px;
+    border: black 1px solid;
+    resize: none;
+    width: 25%;
+    height: 45px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 15.5px;
+    font-size: medium;
+}
+
+
+/*Extra pequeno dispositivo (telefone retrato, menor que 576px)*/
+@media (max-width: 575.98px) {
+    
+    .div-form select {
+        height: 40px;
+        width: 320px;
+    }
+
+    label {
+        font-size: 18px;
+    }
+
+    textarea {
+        width: 65%;
+        margin-top: 20px;   
+        font-size: 13px;
+    }
+    
+}
+
+/*Pequeno dispositivo (telefone paisagem, 576px e maiores)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+    .div-form select {
+        height: 45px;
+        width: 340px;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    textarea {
+        width: 45%;
+        margin-top: 20px;   
+        font-size: 13px;
+    }
+}
+
+/*Médio dispositivo (tablets, 768px e maiores)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+    .div-form input[type='submit'] {
+        margin-bottom: 4em;
+    }
+
+    textarea {
+        width: 41.5%;
+        margin-top: 20px;   
+        font-size: 13px;
+    }
+}
+
+/*Grande dispositivo (desktops, 992px e maiores)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+    .div-form input[type='submit'] {
+        margin-bottom: 4em;
+    }
+
+    textarea {
+        width: 33.3%;
+        margin-top: 20px;   
+        font-size: 13px;
+    }
+}
+
+/*Extra grande dispositivo (large desktops, 1200px  e maiores)*/
+@media (min-width: 1200px) {
+
+    .div-form input[type='submit'] {
+        margin-bottom: 5em;
+    }
+
+    textarea {
+        width: 23.5%;
+        margin-top: 20px;   
+        font-size: 13px;
+    }
+}

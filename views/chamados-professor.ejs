@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/tela-gerente.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://kit.fontawesome.com/108281d3fc.js" crossorigin="anonymous"></script>
+  <title>Gerenciar</title>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="/index-docente">KLING</a>
+    <ul class="nav-list">
+      <li><a href="/professor/novo-chamado">Novo Chamado</a></li>
+      <li><a href="/professor/meus-chamados">Meus Chamados</a></li>
+      <li><button class="material-symbols-outlined" id="btnModal">account_circle</button></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Modal-->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <i class="fa-regular fa-circle-user fa-5x"></i>
+    <h2>Informações do Usuário</h2>
+    <p>Nome: Rafael Abreu</p>
+    <p>Email: kling@example.com</p>
+    <p>Telefone: 71</p>
+  </div>
+</div>
+
+<main>
+  <h1>Olá, Professor!</h1>
+  <h2>Esses são todos os seus chamados abertos</h2>
+
+    <!-- Tela de chamados -->
+    <!-- Aqui será apresentado todos os chamados abertos -->
+    <div class="screen-chamados">
+      
+      <% results.forEach(function(result) { %>
+        <div class="chamado">
+          <div class="text-chamado">
+            <span class="titulo"><%= result.idAparelho.toUpperCase() %>: CHAMADA NO BLOCO <%= result.idEndereco %>, SALA <%= result.sala %></span>
+          </div>
+          <a class="detalhar" href="#">Leia mais...</a>
+          <span class="detalhamento">
+            <p>Descrição: <%= result.descricao %></p>
+          </span>
+        </div>
+      <% }); %>
+    
+    </div>
+</main>
+
+<!-- Rodapé -->
+<footer>
+  <h3>FALE CONOSCO</h3>
+  <ul>
+    <li>
+      Email coorporativo
+    </li>
+    <li>
+      Numero
+    </li>
+  </ul>
+</footer>
+
+<script>
+//        Modal
+// Obter elementos do DOM
+const modal = document.getElementById('myModal')
+const btnModal = document.getElementById('btnModal')
+const closeModalBtn = document.getElementsByClassName('close')[0]
+
+// Abrir o modal quando o botão for clicado
+btnModal.addEventListener('click', function() {
+  modal.style.display = 'block'
+})
+
+// Fechar o modal quando o botão de fechar for clicado
+closeModalBtn.addEventListener('click', function() {
+  modal.style.display = 'none'
+})
+
+// Fechar o modal quando o usuário clicar fora da área do modal
+window.addEventListener('click', function(event) {
+  if (event.target === modal) {
+    modal.style.display = 'none'
+  }
+})
+//       Detalhar
+// Obter elementos DOM
+const details = document.getElementsByClassName('detalhar')
+const detalhamento = document.getElementsByClassName('detalhamento')
+
+for (let i = 0; i < details.length; i++) {
+  details[i].addEventListener('click', function(event) {
+    event.preventDefault()
+
+    const text = this.innerHTML
+
+    if (text === 'Leia mais...') {
+      this.innerHTML = 'Leia menos...'
+      this.parentNode.style.height = '110px'
+      detalhamento[i].style.display = 'inherit'
+      detalhamento[i].style.position = 'absolute'
+      detalhamento[i].style.bottom = '30%'
+      detalhamento[i].style.left = '11%'
+      
+    } else {
+      this.innerHTML = 'Leia mais...'
+      this.parentNode.style.height = '15%'
+      detalhamento[i].style.display = 'none'
+    }
+  })
+}
+</script>
+<script src="https://kit.fontawesome.com/108281d3fc.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Wallpaper da Tela de Login */
+.tela-login {
+    background-color: #4169E1;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    /*flex-direction: column;*/
+}
+
+/* Tema Padrão do Formulário */
+.form-login {
+    background: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 80px;
+    border-radius: 8px;
+    align-items: center;
+    /*height: 45%;*/
+    gap: 30px;
+    /*Esse Gap vai fazer com que fique o memso espaçamento entre o login e os outros os itens */
+    box-shadow: 10px 10px 8px rgb(0, 0, 0, 0.336);
+}
+
+/* Título do formulário */
+.form-login h1 {
+    position: relative;
+    font-size: 43px;
+    margin-bottom: 20px;
+}
+
+/* Define uma linha abaixo do título do formulário*/
+.form-login h1::before {
+    position: absolute;
+    content: '';
+    width: 40%;
+    background: #4169E1;
+    height: 3px;
+    bottom: 4px;
+    border-radius: 5px;
+}
+
+/* Botão de Login */
+.form-login input[type='submit'] {
+    border: none;
+    background: #4169E1;
+    color: #fff;
+    padding: 7px;
+    font-size: 18px;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 240px;
+    margin: auto;
+}
+
+.form-login input[type='submit']:hover {
+    border-radius: 3em;
+    transform: scale(1.05);
+    transition: all 2s;
+}
+
+.error {
+    display: none;
+    color: #ff0000;
+    font-size: small;
+}
+
+/* Os Campos dos Inputs */
+.campo-input {
+    border-bottom: 1px solid #6495ED;
+    font-size: 23px;
+    color: var(--color-dark-900);
+    max-width: 260px;
+    /* ajuste esse valor de acordo com a largura do ícone */
+}
+
+.campo-input input {
+    display: block;
+    margin: 10px;
+    border: none;
+    max-width: 180px;
+    font-size: 18px;
+    margin-bottom: 3px;
+    outline: none;
+    /* Tira as bordas */
+    background-color: #f8faf6;
+    text-align: center;
+}
+
+.redefine-senha {
+    text-decoration: none;
+    color: black;
+}
+
+.redefine-senha:hover {
+    text-decoration: none;
+    color: #4169E1;
+    transition: all 1s;
+}
+
+/*Extra pequeno dispositivo (telefone retrato, menor que 576px)*/
+@media (max-width: 575.98px) {
+
+    .form-login {
+        padding: 30px;
+        height: 435px;
+        width: 220px;
+    }
+
+    .form-login h1 {
+        font-size: 35px;
+    }
+
+    .campo-input {
+        font-size: 18px;
+    }
+
+    .campo-input input {
+        font-size: 16px;
+    }
+
+    .form-login input[type='submit'] {
+        width: 130px;
+
+    }
+
+}
+
+/*Pequeno dispositivo (telefone paisagem, 576px e maiores)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+    .form-login {
+        padding: 45px;
+        height: 430px;
+    }
+
+    .form-login h1 {
+        font-size: 38px;
+    }
+
+    .campo-input {
+        font-size: 19px;
+    }
+
+    .campo-input input {
+        font-size: 17.3px;
+    }
+
+    .form-login input[type='submit'] {
+        width: 160px;
+    }
+}
+
+/*Médio dispositivo (tablets, 768px e maiores)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+    .form-login {
+        padding: 50px;
+        height: 440px;
+        width: 250px;
+    }
+
+    .form-login h1 {
+        font-size: 39.5px;
+    }
+
+    .campo-input {
+        font-size: 20.5px;
+    }
+
+    .campo-input input {
+        font-size: 18.5px;
+    }
+
+    .form-login input[type='submit'] {
+        width: 180px;
+    }
+}
