@@ -14,6 +14,7 @@
   const ChamadoOpcoesService = require('./services/chamado/chamadoOpcoes_service');
   const ChamadoEnviarService = require('./services/chamado/chamadoEnviar_service');
   const CarregarChamados = require('./services/chamado/carregarChamado_service');
+  const FinalizarInformacoes = require('./services/tecnico/finalizarInformacoes_service');
 
 //Instâncias
   const usuarioService = new UserService()
@@ -21,6 +22,7 @@
   const chamadoOpcoesService = new ChamadoOpcoesService()
   const chamadoEnviarService = new ChamadoEnviarService()
   const carregarChamados = new CarregarChamados();
+  const finalizarInformacoes = new FinalizarInformacoes()
 
 //Global
 let idUsuario
@@ -76,13 +78,11 @@ let idUsuario
       res.render('chamados-professor', { results: results })
     })
 
-    app.get('/tecnico', async (req, res) => {
-      const results = await carregarChamados.carregarChamadosTecnico()
-      res.render('tecnico-principal', { results: results })
-    })
-
-    app.get('/tecnico/finalizar-chamado', (req, res) => {
-      res.render('finalizar-chamado')
+    app.get('/tecnico/finalizar-chamado', async (req, res) => {
+      const idChamado = await finalizarInformacoes.requisitarChamadoID(idUsuario)
+      const infoChamado = await finalizarInformacoes.requisitarInformacoesDoChamado(idChamado)
+      const infoUsuario = await finalizarInformacoes.requisitarInformacoesDoUsuario(ifChamado[0].idUsuario)
+      res.render('finalizar-chamado', {infoChamado: infoChamado, infoUsuario: infoUsuario})
     })
 
   //POSTs
@@ -96,7 +96,7 @@ let idUsuario
         } else if (usuarioFuncao === 'GERENTE') {
           res.redirect('/gerente/usuarios')
         } else if (usuarioFuncao === 'TECNICO') {
-          res.redirect('/tecnico')
+          res.redirect('/tecnico/finalizar-chamado')
         }
       } else {
         console.log('Erro de autenticação!!!')

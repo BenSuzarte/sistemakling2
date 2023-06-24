@@ -19,22 +19,6 @@ class CarregarChamados {
     })
   }
 
-  carregarChamadosTecnico() {
-    return new Promise((resolve, reject) => {
-      db.conn.query('SELECT * FROM Chamado', async (err, results) => {
-        if(err) {
-          reject(err)
-        } else {
-          for(let i=0; i<results.length; i++) {
-            results[i].idAparelho = await this.requisitarNomeDoAparelho(results[i].idAparelho)
-            results[i].idEndereco = await this.requisitarNomeDoBloco(results[i].idEndereco)
-          }
-          resolve(results)
-        }
-      })
-    })
-  }
-
   requisitarNomeDoAparelho(idAparelho) {
     return new Promise((resolve, reject) => {
       db.conn.query('SELECT aparelho FROM Aparelho WHERE idAparelho = ?', [idAparelho],
