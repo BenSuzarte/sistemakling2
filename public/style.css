@@ -6,50 +6,52 @@
 }
 
 /* Estilos para os elementos h2, label e span */
-h2, label, span {
+h2,
+label,
+span {
   color: #000;
 }
 
 /* Estilos para o elemento h1 */
 h1 {
-  color: #000; 
-  margin: 15px; 
+  color: #000;
+  margin: 15px;
 }
 
 /* Estilos para o corpo da página */
 body {
-  background-color: #fff; 
+  background-color: #fff;
   background-size: cover;
-  height: 100vh; 
+  height: 100vh;
 }
 
 /* Estilos para links */
 a {
-  font-size:larger; 
+  font-size: larger;
   color: #fff;
-  text-decoration: none; 
+  text-decoration: none;
   transition: 0.3;
 }
 
 /* Estilos para links em estado de hover */
 a:hover {
-  opacity: 0.7; 
+  opacity: 0.7;
 }
 
 /* Estilos para o logo */
 .logo {
   font-size: 34px;
-  text-transform: uppercase; 
-  letter-spacing: 4px; 
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 
 /* Estilos para a barra de navegação */
 nav {
   display: flex;
   justify-content: space-around;
-  align-items: center; 
-  background: #4169E1; 
-  height: 8vh; 
+  align-items: center;
+  background: #4169E1;
+  height: 8vh;
 }
 
 /* Estilos para a seção principal */
@@ -62,22 +64,22 @@ main {
 /* Estilos para o rodapé */
 footer {
   position: fixed;
-  bottom: 0; 
+  bottom: 0;
   height: 10vw;
-  width: 100vw; 
-  background-color: #4169E1; 
+  width: 100vw;
+  background-color: #4169E1;
   color: #fff;
 }
 
 /* Estilos para o título do rodapé */
 footer h3 {
-  text-align: center; 
-  margin: 30px; 
+  text-align: center;
+  margin: 30px;
 }
 
 /* Estilos para a lista do rodapé */
 footer ul {
-  list-style-type: none; 
+  list-style-type: none;
   display: flex;
   justify-content: space-around;
 }
@@ -85,13 +87,13 @@ footer ul {
 /* Estilos para a lista de navegação */
 .nav-list {
   list-style: none;
-  display: flex; 
+  display: flex;
 }
 
 /* Estilos para os itens da lista de navegação */
 .nav-list li {
   letter-spacing: 3px;
-  margin-left: 32px; 
+  margin-left: 32px;
 }
 
 /* Estilos para o botão de ícone */
@@ -106,6 +108,64 @@ footer ul {
   background-color: transparent;
   border: none;
 }
+
+/* Modal Info User */
+/* Estilos para o modal */
+.info-modal {
+  color: #fff;
+  display: none;
+  /* Esconde o modal por padrão */
+  position: fixed;
+  z-index: 1;
+  /* Define a ordem de empilhamento do elemento */
+  left: 30vw;
+  top: 5vw;
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilos para o conteúdo do modal */
+.info-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #4169E1;
+  margin: auto;
+  padding: 20px;
+  gap: 15px;
+  border: 1px;
+  border-radius: 7.5px;
+  width: 240px;
+  box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.2);
+  height: 320px;
+}
+
+.info-modal-content h2 {
+  color: #fff;
+}
+
+/* Estilos para o botão de fechar do modal */
+.close-info {
+  display: inherit;
+  margin-top: -5px;
+  padding: 2.5px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-end;
+  /* Adicionado para alinhar no canto direito do modal */
+}
+
+/* Estilos para o botão de fechar do modal quando está em hover ou focado */
+.close-info:hover,
+.close-info:focus {
+  color: #ff0000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
 
 /*Extra pequeno dispositivo (telefone retrato, menor que 576px)*/
 @media (max-width: 575.98px) {
@@ -122,42 +182,18 @@ footer ul {
   .logo {
     font-size: 20px;
     margin-left: 10px;
-    letter-spacing: 4px; 
+    letter-spacing: 4px;
   }
 
   .nav-list {
     list-style: none;
-    display: flex; 
+    display: flex;
     margin-left: 32px;
   }
-  
+
   .nav-list li {
     letter-spacing: 1px;
     margin-left: 15px;
-    font-size: 15px; 
-  }
-
-  .modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    background-color: #4169E1;
-    margin-left: 110px;
-    padding: 20px;
-    gap: 15px;
-    border: 1px;
-    border-radius: 7.5px;
-    width: 180px;
-    box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.2);
-    height: 300px;
-  }
-
-  .modal-content h2 {
-    color: #fff;
-    font-size: 15px;
-  }
-
-  .modal-content p {
     font-size: 15px;
   }
 

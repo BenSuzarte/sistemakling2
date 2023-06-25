@@ -18,22 +18,10 @@
     <ul class="nav-list">
       <li><a href="/professor/novo-chamado">Novo Chamado</a></li>
       <li><a href="/professor/meus-chamados">Meus Chamados</a></li>
-      <li><button class="material-symbols-outlined" id="btnModal">account_circle</button></li>
+      <li><button class="material-symbols-outlined" id="btn-info-modal">account_circle</button></li>
     </ul>
   </nav>
 </header>
-
-<!-- Modal-->
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <i class="fa-regular fa-circle-user fa-5x"></i>
-    <h2>Informações do Usuário</h2>
-    <p>Nome: Rafael Abreu</p>
-    <p>Email: kling@example.com</p>
-    <p>Telefone: 71</p>
-  </div>
-</div>
 
 <main>
   <h1>Olá, Professor!</h1>
@@ -71,27 +59,39 @@
   </ul>
 </footer>
 
+<!-- Modal Info -->
+<div id="user-modal" class="info-modal">
+  <div class="info-modal-content">
+    <span class="close-info">&times;</span>
+    <i class="fa-regular fa-circle-user fa-5x"></i>
+    <h2>Informações do Usuário</h2>
+    <p>Nome: Rafael Abreu</p>
+    <p>Email: kling@example.com</p>
+    <p>Telefone: 71</p>
+  </div>
+</div>
+
 <script>
-//        Modal
-// Obter elementos do DOM
-const modal = document.getElementById('myModal')
-const btnModal = document.getElementById('btnModal')
-const closeModalBtn = document.getElementsByClassName('close')[0]
-
+// -------------- MODAL USER INFO --------------
+// Obter elementos DOM
+const infoModal = document.getElementById('user-modal')
+const btnInfoModal = document.getElementById('btn-info-modal')
+const closeInfoModalBtn = document.getElementsByClassName('close-info')[0]
+      
 // Abrir o modal quando o botão for clicado
-btnModal.addEventListener('click', function() {
-  modal.style.display = 'block'
+btnInfoModal.addEventListener('click', function() {
+  infoModal.style.display = 'block'
 })
-
+      
 // Fechar o modal quando o botão de fechar for clicado
-closeModalBtn.addEventListener('click', function() {
-  modal.style.display = 'none'
+closeInfoModalBtn.addEventListener('click', function() {
+  infoModal.style.display = 'none'
 })
-
+      
 // Fechar o modal quando o usuário clicar fora da área do modal
 window.addEventListener('click', function(event) {
-  if (event.target === modal) {
-    modal.style.display = 'none'
+  if (event.target === infoModal) {
+    infoModal.style.display = 'none'
   }
 })
 //       Detalhar

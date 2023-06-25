@@ -95,12 +95,12 @@
     background-color: #f8faf6;
 }
 
-.redefinir-senha {
+.redefine-senha {
     text-decoration: none;
     color: black;
 }
 
-.redefinir-senha:hover {
+.redefine-senha:hover {
     text-decoration: none;
     color: #4169E1;
     transition: all 2s;

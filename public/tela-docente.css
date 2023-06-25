@@ -21,7 +21,8 @@ label {
     color: #000;
     text-align: center;
     font-size: medium;
-    outline: none; /* Tira as bordas */
+    outline: none;
+    /* Tira as bordas */
 }
 
 .div-form input[type="number"] {
@@ -33,7 +34,8 @@ label {
     color: #000;
     text-align: center;
     font-size: medium;
-    outline: none; /* Tira as bordas */
+    outline: none;
+    /* Tira as bordas */
 }
 
 /* Estilos para o botão de envio do formulário dentro da classe .div-form */
@@ -62,7 +64,7 @@ input::-moz-placeholder {
 }
 
 /* classe erro */
-.error{
+.error {
     display: none;
     color: #ff0000;
     font-size: medium;
@@ -83,24 +85,81 @@ textarea {
 }
 
 
+
 /*Extra pequeno dispositivo (telefone retrato, menor que 576px)*/
 @media (max-width: 575.98px) {
-    
-    .div-form select {
-        height: 40px;
-        width: 320px;
-    }
 
     label {
         font-size: 18px;
     }
 
+    .div-form {
+        display: block;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 6vw;
+    }
+
+    .div-form select {
+        display: flex;
+        margin: auto;
+        height: 45px;
+        width: 55%;
+        background-color: #fff;
+        box-sizing: border-box;
+        border-radius: 5px;
+        color: #000;
+        text-align: center;
+        font-size: medium;
+        outline: none;
+        margin-bottom: 10px;
+        /* Tira as bordas */
+    }
+
+    .div-form input[type="number"] {
+        display: flex;
+        margin: auto;
+        height: 45px;
+        width: 55%;
+        box-sizing: border-box;
+        border: black 1px solid;
+        border-radius: 5px;
+        color: #000;
+        text-align: center;
+        font-size: medium;
+        outline: none;
+        /* Tira as bordas */
+    }
+
+    .div-form input[type='submit'] {
+        width: 50%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        margin-top: 10px;
+        color: #fff;
+        background-color: #6495ED;
+        border-radius: 10px;
+        font-size: larger;
+    }
+
+    .div-form input[type='submit']:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+
     textarea {
         width: 65%;
-        margin-top: 20px;   
+        margin-top: 20px;
         font-size: 13px;
     }
-    
+
+    footer {
+        height: 130px;
+    }
+
 }
 
 /*Pequeno dispositivo (telefone paisagem, 576px e maiores)*/
@@ -117,7 +176,7 @@ textarea {
 
     textarea {
         width: 45%;
-        margin-top: 20px;   
+        margin-top: 20px;
         font-size: 13px;
     }
 }
@@ -131,8 +190,12 @@ textarea {
 
     textarea {
         width: 41.5%;
-        margin-top: 20px;   
+        margin-top: 20px;
         font-size: 13px;
+    }
+
+    .div-form input[type="number"] {
+        width: 150px ;
     }
 }
 
@@ -145,9 +208,16 @@ textarea {
 
     textarea {
         width: 33.3%;
-        margin-top: 20px;   
+        margin-top: 20px;
         font-size: 13px;
     }
+
+
+    .div-form input[type="number"] {
+        width: 150px ;
+    }
+
+
 }
 
 /*Extra grande dispositivo (large desktops, 1200px  e maiores)*/
@@ -159,7 +229,14 @@ textarea {
 
     textarea {
         width: 23.5%;
-        margin-top: 20px;   
+        margin-top: 20px;
         font-size: 13px;
     }
+
+
+    .div-form input[type="number"] {
+        width: 150px ;
+    }
+
+
 }

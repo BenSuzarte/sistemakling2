@@ -206,9 +206,32 @@
         </ul>
     </footer>
 
-    <script>
 
-    </script>
+
+<script>
+// -------------- MODAL USER INFO --------------
+// Obter elementos DOM
+const infoModal = document.getElementById('user-modal')
+const btnInfoModal = document.getElementById('btn-info-modal')
+const closeInfoModalBtn = document.getElementsByClassName('close-info')[0]
+      
+// Abrir o modal quando o botão for clicado
+btnInfoModal.addEventListener('click', function() {
+  infoModal.style.display = 'block'
+})
+      
+// Fechar o modal quando o botão de fechar for clicado
+closeInfoModalBtn.addEventListener('click', function() {
+  infoModal.style.display = 'none'
+})
+      
+// Fechar o modal quando o usuário clicar fora da área do modal
+window.addEventListener('click', function(event) {
+  if (event.target === infoModal) {
+    infoModal.style.display = 'none'
+  }
+})
+</script>
 
 </body>
 
