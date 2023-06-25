@@ -25,7 +25,7 @@
         <li><a href="/index-gerente">Chamados</a></li>
         <li><a href="/user-crud">Cadastros</a></li>
         <li><a href="/salas-crud">Salas</a></li>
-        <li><button class="material-symbols-outlined" id="btnInfoModal">account_circle</button></li>
+        <li><button class="material-symbols-outlined" id="btn-info-modal">account_circle</button></li>
       </ul>
     </nav>
   </header>
@@ -34,7 +34,7 @@
   <!-- CRUD -->
 
   <form action="/gerente/usuarios-cadastrar" method="post" class="CRUD">
-    <div class="div-form">
+    <div class="div-form" style="background-color: #f2f2f2;">
       <label for="m-funcao">Função</label>
       <select name="funcao" id="">
         <option value="PROFESSOR">PROFESSOR</option>
@@ -63,8 +63,8 @@
           <th>Nome</th>
           <th>Email</th>
           <th>Telefone</th>
-          <th class="acao">Editar</th>
-          <th class="acao">Excluir</th>
+          <th>Editar</th>
+          <th>Excluir</th>
         </tr>
       </thead>
       <tbody>
@@ -76,10 +76,12 @@
           <td><%= usuario.email %></td>
           <td><%= usuario.telefone %></td>
           <td>
-            <button type="button" class="editCRUD">Editar</button>
+            <button type="button" class="editCRUD" id="btn-edit-modal"
+            data-id="<%= usuario.idUsuario %>"
+            data-nome="<%= usuario.nome %>">Editar</button>
           </td>
           <td>
-            <button type="button" class="deleteCRUD" id="btnDeleteModal"
+            <button type="button" class="deleteCRUD" id="btn-delete-modal"
                 data-id="<%= usuario.idUsuario %>"
                 data-nome="<%= usuario.nome %>">
               Deletar
@@ -92,28 +94,61 @@
     </table>
   </div>
 
-  <!-- Modal Info -->
-  <div id="userModal" class="info-modal">
-    <div class="info-modal-content">
-      <span class="close-info">&times;</span>
-      <i class="fa-regular fa-circle-user fa-5x"></i>
-      <h2>Informações do Usuário</h2>
-      <p>Nome: Rafael Abreu</p>
-      <p>Email: kling@example.com</p>
-      <p>Telefone: 71</p>
-    </div>
+<!-- Modal Info -->
+<div id="user-modal" class="info-modal">
+  <div class="info-modal-content">
+    <span class="close-info">&times;</span>
+    <i class="fa-regular fa-circle-user fa-5x"></i>
+    <h2>Informações do Usuário</h2>
+    <p>Nome: Rafael Abreu</p>
+    <p>Email: kling@example.com</p>
+    <p>Telefone: 71</p>
   </div>
+</div>
 
-  <!-- Modal Delete -->
-  <div id="deleteUserModal" class="delete-modal">
-    <div class="delete-modal-content">
+<!-- Modal Delete -->
+<div id="delete-user-modal" class="delete-modal">
+  <div class="delete-modal-content">
+    <header>
+      <h2>Excluir usuário</h2>
+      <span class="close-delete">&times;</span>
+    </header>
+    <form>
+      <input type="text" name="delete-name" id="delete-name" disabled>
+      <button type="button" class="deleteCRUD">Deletar</button>
+    </form>
+  </div>
+</div>
+
+  <!-- Modal Edit -->
+  <div id="edit-user-modal" class="edit-modal">
+    <div class="edit-modal-content">
       <header>
-        <h2>Excluir usuário</h2>
-        <span class="close-delete">&times;</span>
+        <h2>Editar usuário</h2>
+        <span class="close-edit">&times;</span>
       </header>
       <form>
-        <input type="text" name="name" id="name" disabled>
-        <button type="button" class="deleteCRUD">Deletar</button>
+        <div>
+          <label for="funcao">Função</label>
+          <select name="funcao" id="funcao" required>
+            <option value="PROFESSOR">Professor</option>
+            <option value="TECNICO">Técnico</option>
+            <option value="GERENTE">Gerente</option>
+          </select>
+        </div>
+        <div>
+          <label for="name">Nome</label>
+          <input type="text" name="nome" id="nome" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="text" name="" id="" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+        </div>
+        <div>
+          <label for="tel">Telefone</label>
+          <input type="tel" name="tel" id="tel">
+        </div>
+        <button type="button" class="editCRUD">Confirmar</button>
       </form>
     </div>
   </div>
@@ -122,8 +157,8 @@
 <script>
 // -------------- MODAL USER INFO --------------
 // Obter elementos DOM
-const infoModal = document.getElementById('userModal')
-const btnInfoModal = document.getElementById('btnInfoModal')
+const infoModal = document.getElementById('user-modal')
+const btnInfoModal = document.getElementById('btn-info-modal')
 const closeInfoModalBtn = document.getElementsByClassName('close-info')[0]
       
 // Abrir o modal quando o botão for clicado
@@ -142,29 +177,61 @@ window.addEventListener('click', function(event) {
     infoModal.style.display = 'none'
   }
 })
+// CRUD MODALS
+var deleteOpen = false
+var editOpen = false
+
 // -------------- MODAL DELETE USER --------------
 // Obter elementos DOM
-const deleteModal = document.getElementById('deleteUserModal')
-const btnDeleteModal = document.getElementById('btnDeleteModal')
-const closeDeleteModalBtn = document.getElementsByClassName('close-delete')[0]
+const deleteModal = document.getElementById('delete-user-modal');
+const btnDeleteModal = document.getElementsByClassName('deleteCRUD');
+const closeDeleteModalBtn = document.getElementsByClassName('close-delete')[0];
 
-// Abrir o modal quando o botão for clicado
-btnDeleteModal.addEventListener('click', function() {
-  deleteModal.style.display = 'block'
+// Percorrer todos os botões de deletar
+Array.from(btnDeleteModal).forEach(function (button) {
+  // Adicionar evento de clique a cada botão
+  button.addEventListener('click', function () {
+    deleteModal.style.display = 'block'; // Abrir o modal
+    deleteOpen = true
+
+    if (editOpen){
+      editOpen = false
+      editModal.style.display = 'none'
+    }
+  });
 });
 
 // Fechar o modal quando o botão de fechar for clicado
-closeDeleteModalBtn.addEventListener('click', function() {
-  deleteModal.style.display = 'none'
+closeDeleteModalBtn.addEventListener('click', function () {
+  deleteModal.style.display = 'none';
+  deleteOpen = false
 });
 
-// Fechar o modal quando o usuário clicar fora da área do modal
-window.addEventListener('click', function(event) {
-  if (event.target === deleteModal) {
-    deleteModal.style.display = 'none'
-  }
-})
+// -------------- MODAL EDIT USER --------------
+// Obter elementos DOM
+const editModal = document.getElementById('edit-user-modal');
+const btnEditModal = document.getElementsByClassName('editCRUD');
+const closeEditModalBtn = document.getElementsByClassName('close-edit')[0];
 
+// Percorrer todos os botões de editar
+Array.from(btnEditModal).forEach(function (button) {
+  // Adicionar evento de clique a cada botão
+  button.addEventListener('click', function () {
+    editModal.style.display = 'block'; // Abrir o modal
+    editOpen = true
+
+    if (deleteOpen){
+    deleteOpen = false
+    deleteModal.style.display = 'none'
+    }
+  });
+});
+
+// Fechar o modal quando o botão de fechar for clicado
+closeEditModalBtn.addEventListener('click', function () {
+  editModal.style.display = 'none';
+  editOpen = false
+});
 
 </script>
 
