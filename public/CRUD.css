@@ -93,18 +93,6 @@ td:last-child {
     font-weight: bold;
 }
 
-/* Estilos para o botão "confirmCRUD" */
-.confirmCRUD {
-    background-color: #3CB371;
-    color: #fff;
-    border: black 1px solid;
-    border-radius: 8px;
-    height: 35px;
-    width: 72px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
 /* Estilos para o botão "deleteCRUD" */
 .deleteCRUD {
     background-color: #FF0000;
