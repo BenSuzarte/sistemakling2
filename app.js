@@ -66,6 +66,10 @@ let idUsuario
       }
     });
 
+    app.get('/gerente/salas', async (req, res) => {
+      res.render('salas-crud')
+    })
+
     app.get('/professor/novo-chamado', async (req, res) => {
       const resultsSetores = await chamadoOpcoesService.carregarSetores()
       const resultsBlocos = await chamadoOpcoesService.carregarBlocos()
@@ -81,8 +85,8 @@ let idUsuario
     app.get('/tecnico/finalizar-chamado', async (req, res) => {
       const idChamado = await finalizarInformacoes.requisitarChamadoID(idUsuario)
       const infoChamado = await finalizarInformacoes.requisitarInformacoesDoChamado(idChamado)
-      const infoUsuario = await finalizarInformacoes.requisitarInformacoesDoUsuario(ifChamado[0].idUsuario)
-      res.render('finalizar-chamado', {infoChamado: infoChamado, infoUsuario: infoUsuario})
+      const infoUsuario = await finalizarInformacoes.requisitarInformacoesDoUsuario(infoChamado[0].idUsuario)
+      res.render('finalizar-chamado', /*{infoChamado: infoChamado, infoUsuario: infoUsuario}*/)
     })
 
   //POSTs
@@ -120,6 +124,11 @@ let idUsuario
 
     app.post('/gerente/usuarios-cadastrar', (req, res) => {
       usuarioCrud.cadastrarUsuario(req.body.funcao, req.body.nome, req.body.email, req.body.telefone)
+      res.redirect('/gerente/usuarios')
+    })
+
+    app.post('/gerente/deletar-usuario', (req, res) => {
+      usuarioCrud.deletarUsuario(req.body.id)
       res.redirect('/gerente/usuarios')
     })
 

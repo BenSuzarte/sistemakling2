@@ -48,6 +48,10 @@ class UsuarioCrudService {
       })
     })
   }
+
+  deletarUsuario(idUsuario) {
+    db.conn.query('DELETE FROM Usuario WHERE idUsuario = ?', [idUsuario])
+  }
 }
 
 module.exports = UsuarioCrudService

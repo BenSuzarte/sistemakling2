@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/crud.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://kit.fontawesome.com/108281d3fc.js" crossorigin="anonymous"></script>
+  <title>Relação de salas</title>
+</head>
+
+<body>
+<header>
+  <nav>
+    <a class="logo" href="/index-gerente">KLING</a>
+    <ul class="nav-list">
+      <li><a href="/index-gerente">Chamados</a></li>
+      <li><a href="/user-crud">Cadastros</a></li>
+      <li><a href="/salas-crud">Salas</a></li>
+      <li><button class="material-symbols-outlined" id="btnModal">account_circle</button></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Modal-->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <i class="fa-regular fa-circle-user fa-5x"></i>
+    <h2>Informações do Usuário</h2>
+    <p>Nome: Rafael Abreu</p>
+    <p>Email: kling@example.com</p>
+    <p>Telefone: 71</p>
+  </div>
+</div>
+
+<main>
+  <h1>Salas</h1>
+
+  <div class="CRUD">
+    <table id="registros">
+
+      <tr>
+        <th>Área</th>
+        <th>Bloco</th>
+        <th>Sala</th>
+        <th>
+          <!-- Ao gerente clicar nesse botão, gerará uma nova linha na tabela, onde ele irá inserir os dados da nova sala -->
+          <button onclick="novaSala()" class="addCRUD">Adicionar Sala</button>
+        </th>
+      </tr>
+
+      <tr>
+        <td>Administração</td>
+        <td>A</td>
+        <td>2</td>
+        <td>
+          <!-- Ao gerente clicar nesse botão, ele poderá alterar os dados daquela sala em específico-->
+          <button onclick="editSala(this.parentNode.parentNode.rowIndex)" class="editCRUD">Editar</button>
+          <!-- Botão para excluir sala -->
+          <button class="deleteCRUD">Excluir</button>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</main>
+      
+<footer>
+  <h3>FALE CONOSCO</h3>
+  <ul>
+    <li>
+      Email coorporativo
+    </li>
+    <li>
+      Numero
+    </li>
+  </ul>
+</footer>
+
+<script>
+// -------------- CRUD --------------
+function novaSala() {
+  // Pega os elementos da tabela ( id registros )
+  var tabela = document.getElementById("registros")
+
+  var novaLinha = tabela.insertRow(-1) // Esse InsertRow -1 faz com que uma nova linha seja criada no final da tabela
+
+  // Pega os elementos das colunas da tabela
+  var colunaArea = novaLinha.insertCell(0)
+  var colunaBloco = novaLinha.insertCell(1)
+  var colunaSala = novaLinha.insertCell(2)
+  var colunaBtn = novaLinha.insertCell(3) // Esse insertCell gera as novas colunas
+
+  colunaArea.innerHTML = "<input type='text' placeholder='Digite a área disciplinar'>" // Input para área disciplinar
+  colunaBloco.innerHTML = "<input type='text' placeholder='Digite o bloco da sala'>" // Input para bloco
+  colunaSala.innerHTML = "<input type='text' placeholder='Digite o número da sala'>" // Input para número da sala
+  colunaBtn.innerHTML = "<button class='confirmCRUD' value='Cadastrar'>Cadastrar</button>" // Input submit
+}
+
+function editSala(row) {
+  // Pega os elementos da tabela ( id registros )
+  var tabela = document.getElementById("registros")
+
+  // Pega os elementos das colunas da tabela
+  var colunaArea = tabela.rows[row].cells[0] 
+  var colunaBloco = tabela.rows[row].cells[1]
+  var colunaSala = tabela.rows[row].cells[2]
+  var colunaBtn = tabela.rows[row].cells[3]
+
+  // Salva os valores antigos para possível restauração
+  var areaAntiga = colunaArea.innerHTML
+  var blocoAntigo = colunaBloco.innerHTML
+  var salaAntiga = colunaSala.innerHTML
+
+  // Troca os campos de texto pelos valores atuais para edição
+  colunaArea.innerHTML = "<input type='text' value='" + areaAntiga + "'>"
+  colunaBloco.innerHTML = "<input type='text' value='" + blocoAntigo + "'>"
+  colunaSala.innerHTML = "<input type='text' value='" + salaAntiga + "'>"
+
+
+  // Botão de confirmação para salvar as alterações
+  colunaBtn.innerHTML = "<button onclick='saveSala(" + row + ")' class='confirmCRUD'>Salvar</button>"
+}
+
+// -------------- MODAL --------------
+
+// Obter elementos DOM
+const modal = document.getElementById('myModal')
+const btnModal = document.getElementById('btnModal')
+const closeModalBtn = document.getElementsByClassName('close')[0]
+      
+// Abrir o modal quando o botão for clicado
+btnModal.addEventListener('click', function() {
+  modal.style.display = 'block'
+})
+      
+// Fechar o modal quando o botão de fechar for clicado
+closeModalBtn.addEventListener('click', function() {
+  modal.style.display = 'none'
+})
+      
+// Fechar o modal quando o usuário clicar fora da área do modal
+window.addEventListener('click', function(event) {
+  if (event.target === modal) {
+    modal.style.display = 'none'
+  }
+})
+</script>
+  </body>
+</html>
