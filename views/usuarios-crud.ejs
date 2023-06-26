@@ -30,6 +30,7 @@
     </nav>
   </header>
 
+  <section>
   <h1>Usuários</h1>
   <!-- CRUD -->
 
@@ -93,6 +94,7 @@
       </tbody>
     </table>
   </div>
+</section>
 
 <!-- Modal Info -->
 <div id="user-modal" class="info-modal">
@@ -160,6 +162,7 @@
 const infoModal = document.getElementById('user-modal')
 const btnInfoModal = document.getElementById('btn-info-modal')
 const closeInfoModalBtn = document.getElementsByClassName('close-info')[0]
+const mySection = document.getElementsByTagName('section')[0]
       
 // Abrir o modal quando o botão for clicado
 btnInfoModal.addEventListener('click', function() {
@@ -193,6 +196,7 @@ Array.from(btnDeleteModal).forEach(function (button) {
   button.addEventListener('click', function () {
     deleteModal.style.display = 'block'; // Abrir o modal
     deleteOpen = true
+    mySection.classList.add('efeito-blur')
 
     if (editOpen){
       editOpen = false
@@ -203,7 +207,8 @@ Array.from(btnDeleteModal).forEach(function (button) {
 
 // Fechar o modal quando o botão de fechar for clicado
 closeDeleteModalBtn.addEventListener('click', function () {
-  deleteModal.style.display = 'none';
+  mySection.classList.remove('efeito-blur')
+  deleteModal.style.display = 'none'
   deleteOpen = false
 });
 
@@ -219,6 +224,7 @@ Array.from(btnEditModal).forEach(function (button) {
   button.addEventListener('click', function () {
     editModal.style.display = 'block'; // Abrir o modal
     editOpen = true
+    mySection.classList.add('efeito-blur')
 
     if (deleteOpen){
     deleteOpen = false
@@ -230,6 +236,7 @@ Array.from(btnEditModal).forEach(function (button) {
 // Fechar o modal quando o botão de fechar for clicado
 closeEditModalBtn.addEventListener('click', function () {
   editModal.style.display = 'none';
+  mySection.classList.remove('efeito-blur')
   editOpen = false
 });
 
