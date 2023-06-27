@@ -137,9 +137,10 @@ let idUsuario
       res.redirect('/gerente/usuarios')
     })
 
-    app.post('/tecnico/chamados', (req, res) => {
-
-      res.render('finalizar-chamado', ({id}))
+    app.post('/tecnico/chamados', async (req, res) => {
+      const results = await carregarChamados.carregarChamadoPeloID(req.body.id)
+      const tecnicos = await finalizarInformacoes.requisitarTecnicoNomeID()
+      res.render('finalizar-chamado', ({results: results, tecnicos: tecnicos}))
     })
 
 //Inicialização

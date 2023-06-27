@@ -37,6 +37,19 @@ class FinalizarInformacoes {
       })
     })
   }
+
+  requisitarTecnicoNomeID() {
+    return new Promise((resolve, reject) => {
+      db.conn.query('SELECT * FROM Usuario WHERE funcao = "TECNICO"',
+      (err, results) => {
+        if(err) {
+          reject(err)
+        } else {
+          resolve(results)
+        }
+      })
+    })
+  }
 }
 
 module.exports = FinalizarInformacoes

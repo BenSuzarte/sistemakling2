@@ -29,17 +29,20 @@
   <section class="screen-chamados">
     <!-- Aqui será apresentado todos os chamados abertos -->
     <h2>Chamados Abertos</h2>
+    <% results.forEach(result => { %>
+      <form action="/tecnico/chamados" method="post">
       <div class="chamado">
         <div class="info-chamado">
-          <span class="titulo">COMPUTADOR: CHAMADA NO BLOCO A, SALA 03</span>
-          <a class="finalizar-chamado" href="/finalizar-chamado">Finalizar Chamado</a>
+          <input type="hidden" name="id" value="<%= result.idChamado %>">
+          <span class="titulo"><%= result.aparelho.toUpperCase() %>: CHAMADA NO BLOCO <%= result.bloco %>, SALA <%= result.sala %></span>
+          <button class="finalizar-chamado" type="submit">Finalizar Chamado</button>
         </div>
         <span class="detalhes">
-          <p>detalhamento: detalhes...</p>
+          <p>detalhamento: <%= result.descricao %></p>
         </span>
       </div>
-
-      
+    </form>
+    <% }); %>
   </section>
 </main>
 

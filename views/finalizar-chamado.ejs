@@ -115,83 +115,81 @@
         </nav>
     </header>
 
-    <section class="centro">
-        <div class="container">
-            <div class="row border">
-                <div class="col-md-5">
-
-                    <div class="form-group">
-                        <label for="">
-                            <h5>Professor</h5>
-                        </label>
-                        <input class="form-control border-dark " type="text" id="tecnico" placeholder="Rafael" disabled>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">
-                            <h5>Setor</h5>
-                        </label>
-                        <input class="form-control border-dark" type="text" id="tecnico" placeholder="Informática"
-                            disabled>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">
-                            <h5>Bloco</h5>
-                        </label>
-                        <input class="form-control border-dark" type="text" id="tecnico" placeholder="B" disabled>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">
-                            <h5>Sala</h5>
-                        </label>
-                        <input class="form-control border-dark" type="text" id="tecnico" placeholder="2" disabled>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tecnico">
-                            <h5>Aparelho</h5>
-                        </label>
-                        <input class="form-control border-dark" type="text" id="tecnico" placeholder="Computador"
-                            disabled>
-                    </div>
-
-                    <div>
-                        <textarea disabled> descrição do professor, se ele quiser...</textarea>
-                    </div>
-                </div>
-
-                <div class="col-md-5 offset-2">
-                    <div class="opcoes">
-                        <form class="form-group">
-                            <label for="tecnicos">
-                                <h5>Tecnicos</h5>
+    <form action="/tecnico/finalizar-chamado" method="post">
+        <section class="centro">
+            <div class="container">
+                <div class="row border">
+                    <div class="col-md-5">
+    
+                        <div class="form-group">
+                            <label for="">
+                                <h5>Professor</h5>
                             </label>
-                            <select class="form-control border-dark" id="tecnicos">
-                                <option></option>
-                                <option>Samuel</option>
-                                <option>Rafael</option>
-                                <option>Ariel</option>
-                                <option>Benjamin</option>
-                                <option>Leo</option>
-                            </select>
-                        </form>
+                            <input class="form-control border-dark " type="text" id="tecnico" placeholder="<%= results[0].professor.toUpperCase() %>" disabled>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="">
+                                <h5>Setor</h5>
+                            </label>
+                            <input class="form-control border-dark" type="text" id="tecnico" placeholder="<%= results[0].setor.toUpperCase() %>"
+                                disabled>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="">
+                                <h5>Bloco</h5>
+                            </label>
+                            <input class="form-control border-dark" type="text" id="tecnico" placeholder="<%= results[0].bloco %>" disabled>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="">
+                                <h5>Sala</h5>
+                            </label>
+                            <input class="form-control border-dark" type="text" id="tecnico" placeholder="<%= results[0].sala %>" disabled>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="tecnico">
+                                <h5>Aparelho</h5>
+                            </label>
+                            <input class="form-control border-dark" type="text" id="tecnico" placeholder="<%= results[0].aparelho.toUpperCase() %>"
+                                disabled>
+                        </div>
+    
+                        <div>
+                            <textarea disabled> <%= results[0].descricao %></textarea>
+                        </div>
                     </div>
-
-                    <div class="col-md-12 mt-5" style="text-align: center;">
-                            <h5>Data e Hora</h5>
-                            <div class="row">
-                                <div class="col-md-6 offset-3">
-                                    <input type="time" id="txtHora" name="hora" class="caixa-texto">
+    
+                    <div class="col-md-5 offset-2">
+                        <div class="opcoes">
+                            <form class="form-group">
+                                <label for="tecnicos">
+                                    <h5>Técnicos</h5>
+                                </label>
+                                <select class="form-control border-dark" id="tecnicos">
+                                    <% tecnicos.forEach(result => { %>
+                                        <option name="id" value="<%= result.idUsuario %>"><%= result.nome %></option>
+                                    <% }); %>
+                                </select>
+                            </form>
+                        </div>
+    
+                        <div class="col-md-12 mt-5" style="text-align: center;">
+                                <h5>Data e Hora</h5>
+                                <div class="row">
+                                    <div class="col-md-6 offset-3">
+                                        <input type="time" id="txtHora" name="hora" class="caixa-texto">
+                                    </div>
                                 </div>
-                            </div>
+                        </div>
+    
                     </div>
-
                 </div>
-            </div>
-    </section>
-
+        </section>
+    </form>
 
     <footer>
         <h3>FALE CONOSCO</h3>
