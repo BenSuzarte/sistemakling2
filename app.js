@@ -89,6 +89,11 @@ let idUsuario
       res.render('finalizar-chamado', /*{infoChamado: infoChamado, infoUsuario: infoUsuario}*/)
     })
 
+    app.get("/tecnico/chamados", async (req, res) => {
+      const results = await carregarChamados.carregarTodosChamados()
+      res.render('tecnico-principal', { results: results })
+    })
+
   //POSTs
     app.post('/login', async (req, res) => {
       idUsuario = await usuarioService.requisitarIdUsuario(req.body.email, req.body.senha)
@@ -100,7 +105,7 @@ let idUsuario
         } else if (usuarioFuncao === 'GERENTE') {
           res.redirect('/gerente/usuarios')
         } else if (usuarioFuncao === 'TECNICO') {
-          res.redirect('/tecnico/finalizar-chamado')
+          res.redirect('/tecnico/chamados')
         }
       } else {
         console.log('Erro de autenticação!!!')
@@ -132,9 +137,12 @@ let idUsuario
       res.redirect('/gerente/usuarios')
     })
 
+    app.post('/tecnico/chamados', (req, res) => {
+
+      res.render('finalizar-chamado', ({id}))
+    })
+
 //Inicialização
   app.listen(8080, () => {
     console.log('Servidor Rodando: http://localhost:8080/login');
   })
-
-module.exports = app;

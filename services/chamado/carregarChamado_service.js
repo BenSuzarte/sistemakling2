@@ -46,6 +46,27 @@ class CarregarChamados {
       })
     })
   }
+
+  carregarTodosChamados() {
+    return new Promise((resolve, reject) => {
+      db.conn.query('SELECT * FROM Chamado',
+      async (error, results) => {
+        if(error) {
+          reject(error)
+          throw error
+        } else {
+          for(let i=0; i<results.length; i++) {
+            let aparelho = await this.requisitarNomeDoAparelho(results[i].idAparelho)
+            let bloco = await this.requisitarNomeDoBloco(results[i].idEndereco)
+
+            results[i]['aparelho'] = aparelho
+            results[i]['bloco'] = bloco
+          }
+          resolve(results)
+        }
+      })
+    })
+  }
 }
 
 module.exports = CarregarChamados
