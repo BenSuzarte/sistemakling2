@@ -36,7 +36,7 @@
 
         <div class="div-form">
           <label for="setor">Setor *</label>
-          <select name="setor" id="setor">
+          <select name="setor" id="setor"  required="required">
             <option value="">-- Selecionar --</option>
             <% setores.forEach(function(setor) { %>
               <option value="<%= setor.setor %>">
@@ -48,7 +48,7 @@
           <div style="display: inherit; gap: 45px;">
             <div style="display: inherit; flex-direction: column">
               <label for="bloco">Bloco *</label>
-              <select name="bloco" id="bloco" style="width: 250px;">
+              <select name="bloco" id="bloco" required="required">
                 <option value="">-- Selecionar --</option>
                 <% blocos.forEach(function(bloco) { %>
                   <option value="<%= bloco.bloco %>">
@@ -68,8 +68,8 @@
           <div style="display: inherit; gap: 45px; margin-top: 7.5px;">
             <div style="display: inherit; flex-direction: column">
               <label for="aparelho">Aparelho *</label>
-              <select name="aparelho" id="aparelho" style="width: 250px;">
-                <option value="">-- Selecionar --</option>
+              <select name="aparelho" id="aparelho" required="required">
+                <option value="">  -- Selecionar --</option>
                 <% aparelhos.forEach(function(aparelho) { %>
                   <option value="<%= aparelho.aparelho %>">
                     <%= aparelho.aparelho %>
@@ -81,15 +81,11 @@
             <div style="display: inherit; flex-direction: column">
               <!-- Input para Quantidade -->
               <label for="numero">Número *</label>
-              <input type="number" name="numero" id="numero"/>
+              <input type="number" name="numero" id="numero" required="required"/>
             </div>
           </div>
 
-          <textarea name="descricao" id="descricao" cols="100" rows="10" placeholder="Descreva seu problema"></textarea>
-
-          <div class="error">
-            <p>Todos os campos em * são obrigatórios</p>
-          </div>
+          <textarea name="descricao" id="descricao" cols="100" rows="10" placeholder="Descreva seu problema aqui"></textarea>
 
           <input type="submit" value="Enviar">
         </div>

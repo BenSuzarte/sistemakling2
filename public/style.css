@@ -63,7 +63,7 @@ main {
 
 /* Estilos para o rodapé */
 footer {
-  position: fixed;
+  position:  absolute;
   bottom: 0;
   height: 10vw;
   width: 100vw;
@@ -180,7 +180,7 @@ footer ul {
   }
 
   .logo {
-    font-size: 20px;
+    font-size: 23px;
     margin-left: 10px;
     letter-spacing: 4px;
   }
@@ -188,16 +188,86 @@ footer ul {
   .nav-list {
     list-style: none;
     display: flex;
-    margin-left: 32px;
+    margin-left: 10px;
   }
 
   .nav-list li {
     letter-spacing: 1px;
-    margin-left: 15px;
-    font-size: 15px;
+    margin-left: 12px;
+    font-size: 12px;
+    align-self: center;
+  }
+
+  .info-modal {
+    color: #fff;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 23vw;
+    top: 15vw;
+    width: 100%;
+    height: 100%;
+    padding-top: 8px;
+  }
+  
+  /* Estilos para o conteúdo do modal */
+  .info-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4169E1;
+    margin: auto;
+    padding: 20px;
+    gap: 15px;
+    border: 1px;
+    border-radius: 7.5px;
+    width: 140px;
+    height: 250px;
+    box-shadow: 10px 10px 8px rgb(0, 0, 0, 0.336);
+  }
+  
+  .info-modal-content h2 {
+    color: #fff;
+    font-size: 11.2px;
+  }
+
+  .info-modal-content p {
+    color: #fff;
+    font-size: 10px;
+  }
+  
+  /* Estilos para o botão de fechar do modal */
+  .close-info {
+    display: inherit;
+    margin-top: -5px;
+    padding: 2.5px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-end;
+    /* Adicionado para alinhar no canto direito do modal */
+  }
+  
+  /* Estilos para o botão de fechar do modal quando está em hover ou focado */
+  .close-info:hover,
+  .close-info:focus {
+    color: #ff0000;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 1s;
   }
 
 }
+
+
+
+
+
+
+
+
 
 /*Pequeno dispositivo (telefone paisagem, 576px e maiores)*/
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -210,7 +280,28 @@ footer ul {
     font-size: 23px;
     margin-bottom: 10px;
   }
+
+  .logo {
+    font-size: 25px;
+    margin-left: 10px;
+    letter-spacing: 4px;
+  }
+
+  .nav-list {
+    list-style: none;
+    display: flex;
+    margin-left: 15px;
+  }
+
+  .nav-list li {
+    letter-spacing: 1px;
+    margin-left: 15px;
+    font-size: 14px;
+    align-self: center;
+  }
 }
+
+
 
 /*Médio dispositivo (tablets, 768px e maiores)*/
 @media (min-width: 768px) and (max-width: 991.98px) {}

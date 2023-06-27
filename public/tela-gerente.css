@@ -70,3 +70,24 @@ section h2 {
 .detalhamento{
     display: none;
 }
+
+@media (max-width: 575.98px) {
+
+    .screen-chamados{
+        width: 90%;
+    }
+
+    .chamado{
+        display: inherit;
+        flex-direction: column;
+    }
+
+    .detalhar{
+        display: none;
+    }
+
+    .detalhamento{
+        display: block;
+    }
+
+}
