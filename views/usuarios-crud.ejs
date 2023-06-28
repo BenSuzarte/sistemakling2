@@ -124,6 +124,7 @@
   </div>
 </div>
 
+
   <!-- Modal Edit -->
   <div id="edit-user-modal" class="edit-modal">
     <div class="edit-modal-content">
@@ -162,12 +163,13 @@
 </body>
 <script>
 
+  const mySection = document.getElementsByTagName('section')[0]
   // Função para abrir o modal de exclusão
   function openDeleteModal(id, nome) {
     var deleteNameInput = document.getElementById('delete-name');
     var deleteInputID = document.getElementById('delete-id')
     var deleteButton = document.querySelector('#delete-user-modal .deleteCRUD');
-
+    
     // Define o valor do input de nome no modal
     deleteNameInput.value = nome;
     deleteInputID.value = id;
@@ -177,11 +179,13 @@
 
     // Abre o modal de exclusão
     document.getElementById('delete-user-modal').style.display = 'block';
+    mySection.classList.add('efeito-blur')
   }
 
   // Função para fechar o modal de exclusão
   function closeDeleteModal() {
     document.getElementById('delete-user-modal').style.display = 'none';
+    mySection.classList.remove('efeito-blur')
   }
 
   // Evento de clique no botão de exclusão em cada linha da tabela
@@ -197,6 +201,8 @@
   // Evento de clique no botão de fechar o modal de exclusão
   var closeDeleteButton = document.querySelector('.close-delete');
   closeDeleteButton.addEventListener('click', closeDeleteModal);
+  
+
 
   //MODAL EDITAR
     // Função para abrir o modal de edição
@@ -216,11 +222,14 @@
 
     // Abre o modal de edição
     document.getElementById('edit-user-modal').style.display = 'block';
+    mySection.classList.add('efeito-blur')
   }
 
   // Função para fechar o modal de edição
   function closeEditModal() {
-    document.getElementById('edit-user-modal').style.display = 'none';
+    document.getElementById('edit-user-modal').style.display = 'none';    
+    mySection.classList.remove('efeito-blur')
+
   }
 
   // Evento de clique no botão de edição em cada linha da tabela
@@ -239,38 +248,6 @@
   // Evento de clique no botão de fechar o modal de edição
   var closeEditButton = document.querySelector('.close-edit');
   closeEditButton.addEventListener('click', closeEditModal);
-
-
-// -------------- MODAL USER INFO --------------
-// Obter elementos DOM
-const infoModal = document.getElementById('user-modal')
-const btnInfoModal = document.getElementById('btn-info-modal')
-const closeInfoModalBtn = document.getElementsByClassName('close-info')[0]
-const mySection = document.getElementsByTagName('section')[0]
-      
-// Abrir o modal quando o botão for clicado
-btnInfoModal.addEventListener('click', function() {
-  infoModal.style.display = 'block'
-})
-      
-// Fechar o modal quando o botão de fechar for clicado
-closeInfoModalBtn.addEventListener('click', function() {
-  infoModal.style.display = 'none'
-})
-      
-// Fechar o modal quando o usuário clicar fora da área do modal
-window.addEventListener('click', function(event) {
-  if (event.target === infoModal) {
-    infoModal.style.display = 'none'
-  }
-})
-
-// Fechar o modal quando o botão de fechar for clicado
-closeEditModalBtn.addEventListener('click', function () {
-  editModal.style.display = 'none';
-  mySection.classList.remove('efeito-blur')
-  editOpen = false
-});
 
 </script>
 
