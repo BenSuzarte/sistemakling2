@@ -97,7 +97,7 @@ let idUsuario
       const results = await carregarChamados.carregarTodosChamados()
       res.render('tecnico-principal', { results: results })
     })
-
+    
   //POSTs
     app.post('/login', async (req, res) => {
       idUsuario = await usuarioService.requisitarIdUsuario(req.body.email, req.body.senha)
@@ -112,7 +112,9 @@ let idUsuario
           res.redirect('/tecnico/chamados')
         }
       } else {
-        console.log('Erro de autenticação!!!')
+        
+        res.render('login')
+        
       }
     })
 
