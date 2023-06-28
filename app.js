@@ -70,6 +70,10 @@ let idUsuario
       res.render('salas-crud')
     })
 
+    app.get('/gerente/index', async (req, res) => {
+      res.render('index-gerente')
+    })
+    
     app.get('/professor/novo-chamado', async (req, res) => {
       const resultsSetores = await chamadoOpcoesService.carregarSetores()
       const resultsBlocos = await chamadoOpcoesService.carregarBlocos()
