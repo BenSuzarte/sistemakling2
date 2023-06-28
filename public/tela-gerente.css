@@ -1,5 +1,5 @@
 /* Estilos para a classe .screenChamados */
-section{
+section {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -16,7 +16,7 @@ section{
     overflow: auto;
 }
 
-.screen-chamados > div {
+.screen-chamados>div {
     display: grid;
 }
 
@@ -53,13 +53,16 @@ section h2 {
 
 /* Personaliza a aparência do scroll lateral */
 .screen-chamados::-webkit-scrollbar {
-    width: 8px; /* Largura do scroll lateral */
+    width: 8px;
+    /* Largura do scroll lateral */
 }
 
 /* Estilos para o thumb do scroll lateral */
 .screen-chamados::-webkit-scrollbar-thumb {
-    background-color: #ADD8E6; /* Cor do scroll lateral */
-    border-radius: 4px; /* Formato do scroll lateral */
+    background-color: #ADD8E6;
+    /* Cor do scroll lateral */
+    border-radius: 4px;
+    /* Formato do scroll lateral */
 }
 
 /* Estilos para a classe .detalhe */
@@ -67,28 +70,63 @@ section h2 {
     color: #000;
 }
 
-.detalhamento{
+.detalhamento {
     display: none;
 }
 
-@media (max-width: 575.98px) {
+/*@media (max-width: 575.98px) {
 
-    .screen-chamados{
+    .screen-chamados {
         width: 100%;
     }
 
-    .chamado{
+    .chamado {
         display: inherit;
         flex-direction: column;
     }
 
-    .detalhar{
+    .detalhar {
         display: none;
     }
 
-    .detalhamento{
+    .detalhamento {
+        display: block;
+        font-size: 12px;
+    }
+
+}*/
+
+/*Extra pequeno dispositivo (telefone retrato, menor que 576px)*/
+@media (max-width: 575.98px) {
+
+    .screen-chamados {
+        width: 100%;
+    }
+
+    .chamado {
+        display: inherit;
+        flex-direction: column;
+    }
+
+    .detalhar {
+        display: none;
+    }
+
+    .detalhamento {
         display: block;
         font-size: 12px;
     }
 
 }
+
+/*Pequeno dispositivo (telefone paisagem, 576px e maiores)*/
+@media (min-width: 576px) and (max-width: 767.98px) {}
+
+/*Médio dispositivo (tablets, 768px e maiores)*/
+@media (min-width: 768px) and (max-width: 991.98px) {}
+
+/*Grande dispositivo (desktops, 992px e maiores)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {}
+
+/*Extra grande dispositivo (large desktops, 1200px  e maiores)*/
+@media (min-width: 1200px) {}
