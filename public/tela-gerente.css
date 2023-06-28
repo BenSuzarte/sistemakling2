@@ -7,7 +7,7 @@ section {
 .screen-chamados {
     display: flex;
     flex-direction: column;
-    width: 50vw;
+    width: 45vw;
     max-height: 55vh;
     margin-left: auto;
     margin-right: auto;
@@ -45,12 +45,6 @@ section h2 {
     background-color: #9ACD32;
 }
 
-/* Estilos para a classe .description dentro de .text-chamado */
-.screen-chamados .text-chamado .description {
-    font-size: small;
-    font-style: italic;
-}
-
 /* Personaliza a aparência do scroll lateral */
 .screen-chamados::-webkit-scrollbar {
     width: 8px;
@@ -66,12 +60,13 @@ section h2 {
 }
 
 /* Estilos para a classe .detalhe */
-.detalhar {
+.detalhar-pendente, .detalhar-concluido {
     color: #000;
 }
 
-.detalhamento {
+.detalhamento-pendente, .detalhamento-concluido {
     display: none;
+    font-size: 20px;
 }
 
 /*@media (max-width: 575.98px) {
