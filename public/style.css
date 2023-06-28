@@ -157,6 +157,16 @@ footer ul {
   /* Adicionado para alinhar no canto direito do modal */
 }
 
+/* Estilos para o botão de sair da conta */
+.quit {
+  color: #ff0000;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer; 
+  border: none;
+  background-color: transparent;
+}
+
 /* Estilos para o botão de fechar do modal quando está em hover ou focado */
 .close-info:hover,
 .close-info:focus {
