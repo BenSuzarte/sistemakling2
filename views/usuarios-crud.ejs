@@ -116,12 +116,14 @@
       <h2>Excluir usuário</h2>
       <span class="close-delete">&times;</span>
     </header>
-    <form>
+    <form action="/gerente/deletar-usuario" method="post">
+      <input type="hidden" name="deleteId" id="delete-id">
       <input type="text" name="delete-name" id="delete-name" disabled>
-      <button type="button" class="deleteCRUD">Deletar</button>
+      <button type="submit" class="deleteCRUD">Deletar</button>
     </form>
   </div>
 </div>
+
 
   <!-- Modal Edit -->
   <div id="edit-user-modal" class="edit-modal">
@@ -130,8 +132,10 @@
         <h2>Editar usuário</h2>
         <span class="close-edit">&times;</span>
       </header>
-      <form>
+      <form action="/gerente/editar-usuario" method="post">
         <div>
+          <input type="hidden" name="id" id="edit-id" value="">
+
           <label for="funcao">Função</label>
           <select name="funcao" id="funcao" required>
             <option value="PROFESSOR">Professor</option>
@@ -145,101 +149,105 @@
         </div>
         <div>
           <label for="email">Email</label>
-          <input type="text" name="" id="" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+          <input type="text" name="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
         </div>
         <div>
           <label for="tel">Telefone</label>
           <input type="tel" name="tel" id="tel">
         </div>
-        <button type="button" class="editCRUD">Confirmar</button>
+        <button type="submit" class="editCRUD">Confirmar</button>
       </form>
     </div>
   </div>
 
 </body>
 <script>
-// -------------- MODAL USER INFO --------------
-// Obter elementos DOM
-const infoModal = document.getElementById('user-modal')
-const btnInfoModal = document.getElementById('btn-info-modal')
-const closeInfoModalBtn = document.getElementsByClassName('close-info')[0]
-const mySection = document.getElementsByTagName('section')[0]
-      
-// Abrir o modal quando o botão for clicado
-btnInfoModal.addEventListener('click', function() {
-  infoModal.style.display = 'block'
-})
-      
-// Fechar o modal quando o botão de fechar for clicado
-closeInfoModalBtn.addEventListener('click', function() {
-  infoModal.style.display = 'none'
-})
-      
-// Fechar o modal quando o usuário clicar fora da área do modal
-window.addEventListener('click', function(event) {
-  if (event.target === infoModal) {
-    infoModal.style.display = 'none'
+
+  const mySection = document.getElementsByTagName('section')[0]
+  
+  // Função para abrir o modal de exclusão
+  function openDeleteModal(id, nome) {
+    var deleteNameInput = document.getElementById('delete-name');
+    var deleteInputID = document.getElementById('delete-id')
+    var deleteButton = document.querySelector('#delete-user-modal .deleteCRUD');
+    
+    // Define o valor do input de nome no modal
+    deleteNameInput.value = nome;
+    deleteInputID.value = id;
+
+    // Adiciona o ID do usuário como um atributo de dados ao botão de exclusão no modal
+    deleteButton.setAttribute('data-id', id);
+
+    // Abre o modal de exclusão
+    document.getElementById('delete-user-modal').style.display = 'block';
+    mySection.classList.add('efeito-blur')
   }
-})
-// CRUD MODALS
-var deleteOpen = false
-var editOpen = false
 
-// -------------- MODAL DELETE USER --------------
-// Obter elementos DOM
-const deleteModal = document.getElementById('delete-user-modal');
-const btnDeleteModal = document.getElementsByClassName('deleteCRUD');
-const closeDeleteModalBtn = document.getElementsByClassName('close-delete')[0];
+  // Função para fechar o modal de exclusão
+  function closeDeleteModal() {
+    document.getElementById('delete-user-modal').style.display = 'none';
+    mySection.classList.remove('efeito-blur')
+  }
 
-// Percorrer todos os botões de deletar
-Array.from(btnDeleteModal).forEach(function (button) {
-  // Adicionar evento de clique a cada botão
-  button.addEventListener('click', function () {
-    deleteModal.style.display = 'block'; // Abrir o modal
-    deleteOpen = true
-    mySection.classList.add('efeito-blur')
-
-    if (editOpen){
-      editOpen = false
-      editModal.style.display = 'none'
-    }
+  // Evento de clique no botão de exclusão em cada linha da tabela
+  var deleteButtons = document.querySelectorAll('.deleteCRUD');
+  deleteButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var userId = this.getAttribute('data-id');
+      var userName = this.getAttribute('data-nome');
+      openDeleteModal(userId, userName);
+    });
   });
-});
 
-// Fechar o modal quando o botão de fechar for clicado
-closeDeleteModalBtn.addEventListener('click', function () {
-  mySection.classList.remove('efeito-blur')
-  deleteModal.style.display = 'none'
-  deleteOpen = false
-});
+  // Evento de clique no botão de fechar o modal de exclusão
+  var closeDeleteButton = document.querySelector('.close-delete');
+  closeDeleteButton.addEventListener('click', closeDeleteModal);
+  
 
-// -------------- MODAL EDIT USER --------------
-// Obter elementos DOM
-const editModal = document.getElementById('edit-user-modal');
-const btnEditModal = document.getElementsByClassName('editCRUD');
-const closeEditModalBtn = document.getElementsByClassName('close-edit')[0];
+  //MODAL EDITAR
+    // Função para abrir o modal de edição
+    function openEditModal(id, funcao, nome, email, telefone) {
+    var funcaoSelect = document.getElementById('funcao');
+    var nomeInput = document.getElementById('nome');
+    var emailInput = document.getElementById('email');
+    var telefoneInput = document.getElementById('tel');
+    var idInput = document.getElementById('edit-id');
 
-// Percorrer todos os botões de editar
-Array.from(btnEditModal).forEach(function (button) {
-  // Adicionar evento de clique a cada botão
-  button.addEventListener('click', function () {
-    editModal.style.display = 'block'; // Abrir o modal
-    editOpen = true
+    // Define o valor dos campos no modal
+    funcaoSelect.value = funcao;
+    nomeInput.value = nome;
+    emailInput.value = email;
+    telefoneInput.value = telefone;
+    idInput.value = id;
+
+    // Abre o modal de edição
+    document.getElementById('edit-user-modal').style.display = 'block';
     mySection.classList.add('efeito-blur')
+  }
 
-    if (deleteOpen){
-    deleteOpen = false
-    deleteModal.style.display = 'none'
-    }
+  // Função para fechar o modal de edição
+  function closeEditModal() {
+    document.getElementById('edit-user-modal').style.display = 'none';    
+    mySection.classList.remove('efeito-blur')
+
+  }
+
+  // Evento de clique no botão de edição em cada linha da tabela
+  var editButtons = document.querySelectorAll('.editCRUD');
+  editButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var userId = this.getAttribute('data-id');
+      var funcao = this.parentNode.parentNode.querySelector('td:nth-child(2)').innerText;
+      var nome = this.parentNode.parentNode.querySelector('td:nth-child(3)').innerText;
+      var email = this.parentNode.parentNode.querySelector('td:nth-child(4)').innerText;
+      var telefone = this.parentNode.parentNode.querySelector('td:nth-child(5)').innerText;
+      openEditModal(userId, funcao, nome, email, telefone);
+    });
   });
-});
 
-// Fechar o modal quando o botão de fechar for clicado
-closeEditModalBtn.addEventListener('click', function () {
-  editModal.style.display = 'none';
-  mySection.classList.remove('efeito-blur')
-  editOpen = false
-});
+  // Evento de clique no botão de fechar o modal de edição
+  var closeEditButton = document.querySelector('.close-edit');
+  closeEditButton.addEventListener('click', closeEditModal);
 
 </script>
 

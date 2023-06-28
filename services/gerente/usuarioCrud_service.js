@@ -52,6 +52,11 @@ class UsuarioCrudService {
   deletarUsuario(idUsuario) {
     db.conn.query('DELETE FROM Usuario WHERE idUsuario = ?', [idUsuario])
   }
+
+  editarUsuario(idUsuario, funcao, nome, email, telefone) {
+    db.conn.query('UPDATE Usuario SET funcao = ?, nome = ?, email = ?, telefone = ? WHERE idUsuario = ?',
+    [funcao, nome, email, telefone, idUsuario])
+  }
 }
 
 module.exports = UsuarioCrudService

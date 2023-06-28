@@ -97,7 +97,7 @@ let idUsuario
       const results = await carregarChamados.carregarTodosChamados()
       res.render('tecnico-principal', { results: results })
     })
-
+    
   //POSTs
     app.post('/login', async (req, res) => {
       idUsuario = await usuarioService.requisitarIdUsuario(req.body.email, req.body.senha)
@@ -112,7 +112,9 @@ let idUsuario
           res.redirect('/tecnico/chamados')
         }
       } else {
-        console.log('Erro de autenticação!!!')
+        
+        res.render('login')
+        
       }
     })
 
@@ -137,7 +139,12 @@ let idUsuario
     })
 
     app.post('/gerente/deletar-usuario', (req, res) => {
-      usuarioCrud.deletarUsuario(req.body.id)
+      usuarioCrud.deletarUsuario(req.body.deleteId)
+      res.redirect('/gerente/usuarios')
+    })
+
+    app.post('/gerente/editar-usuario', (req, res) => {
+      usuarioCrud.editarUsuario(req.body.id, req.body.funcao, req.body.nome, req.body.email, req.body.tel)
       res.redirect('/gerente/usuarios')
     })
 
