@@ -20,7 +20,7 @@
       <li><a href="/gerente/index">Chamados</a></li>
       <li><a href="/gerente/usuarios">Cadastros</a></li>
       <li><a href="/gerente/salas">Salas</a></li>
-      <li><button class="material-symbols-outlined" id="btnModal">account_circle</button></li>
+      <li><button class="material-symbols-outlined" id="btn-info-modal">account_circle</button></li>
     </ul>
   </nav>
 </header>
@@ -51,7 +51,7 @@
 
       <div class="chamado">
         <div class="text-chamado">
-          <span class="titulo">COMPUTADOR: CHAMADA NO BLOCO A, SALA 03</span>
+          <span>COMPUTADOR: CHAMADA NO BLOCO A, SALA 03</span>
         </div>
         <a class="detalhar-concluido" href="#">Leia mais...</a>
 
@@ -97,10 +97,10 @@
   </ul>
 </footer>
 
-<!-- Modal-->
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
+<!-- Modal Info -->
+<div id="user-modal" class="info-modal">
+  <div class="info-modal-content">
+    <span class="close-info">&times;</span>
     <i class="fa-regular fa-circle-user fa-5x"></i>
     <h2>Informações do Usuário</h2>
     <p>Nome: Rafael Abreu</p>
@@ -111,29 +111,28 @@
 </div>
 
 <script>
-  //        Modal
-  // Obter elementos do DOM
-  const modal = document.getElementById('myModal')
-  const btnModal = document.getElementById('btnModal')
-  const closeModalBtn = document.getElementsByClassName('close')[0]
-  
+  // -------------- MODAL USER INFO --------------
+  // Obter elementos DOM
+  const infoModal = document.getElementById('user-modal')
+  const btnInfoModal = document.getElementById('btn-info-modal')
+  const closeInfoModalBtn = document.getElementsByClassName('close-info')[0]
+        
   // Abrir o modal quando o botão for clicado
-  btnModal.addEventListener('click', function() {
-    modal.style.display = 'block'
+  btnInfoModal.addEventListener('click', function() {
+    infoModal.style.display = 'block'
   })
-  
+        
   // Fechar o modal quando o botão de fechar for clicado
-  closeModalBtn.addEventListener('click', function() {
-    modal.style.display = 'none'
+  closeInfoModalBtn.addEventListener('click', function() {
+    infoModal.style.display = 'none'
   })
-  
+        
   // Fechar o modal quando o usuário clicar fora da área do modal
   window.addEventListener('click', function(event) {
-    if (event.target === modal) {
-      modal.style.display = 'none'
+    if (event.target === infoModal) {
+      infoModal.style.display = 'none'
     }
   })
-
 ///////////////////////////////////////////////////////////////////////
 
 //       Detalhar
@@ -156,7 +155,7 @@ for (let i = 0; i < chamadoPendente.length; i++) {
       detalhamentoPendente[i].style.display = 'inherit'
       detalhamentoPendente[i].style.flexDirection = 'column'
       detalhamentoPendente[i].style.position = 'absolute'
-      detalhamentoPendente[i].style.left = '11.5%'
+      detalhamentoPendente[i].style.left = '12%'
       detalhamentoPendente[i].style.bottom = '20%'
       
     } else {
@@ -179,8 +178,8 @@ for (let i = 0; i < chamadoConcluido.length; i++) {
         detalhamentoConcluido[i].style.display = 'inherit'
         detalhamentoConcluido[i].style.flexDirection = 'column'
         detalhamentoConcluido[i].style.position = 'absolute'
-        detalhamentoConcluido[i].style.left = '11.5%'
-        detalhamentoConcluido[i].style.bottom = '20%'
+        detalhamentoConcluido[i].style.left = '13%'
+        detalhamentoConcluido[i].style.bottom = '17.5%'
 
       } else {
         this.innerHTML = 'Leia mais...'
