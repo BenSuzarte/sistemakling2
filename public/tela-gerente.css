@@ -7,7 +7,7 @@ section{
 .screen-chamados {
     display: flex;
     flex-direction: column;
-    width: 40vw;
+    width: 50vw;
     max-height: 55vh;
     margin-left: auto;
     margin-right: auto;
@@ -74,7 +74,7 @@ section h2 {
 @media (max-width: 575.98px) {
 
     .screen-chamados{
-        width: 90%;
+        width: 100%;
     }
 
     .chamado{
@@ -88,6 +88,7 @@ section h2 {
 
     .detalhamento{
         display: block;
+        font-size: 12px;
     }
 
 }
