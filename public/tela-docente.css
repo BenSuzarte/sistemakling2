@@ -138,8 +138,8 @@ textarea {
     }
 
     footer {
-        height: 100px;
-        position: static;
+        height: 13%;
+        position: relative;
     }
 
     .detalhar{
@@ -222,8 +222,8 @@ textarea {
     }
 
     footer {
-        height: 120px;
-        position: static;
+        height: 15%;
+        position: relative;
     }
 
     .detalhar{
@@ -311,8 +311,9 @@ textarea {
     }
 
     footer {
-        height: 120px;
-        position: static;
+        height: 110px;
+        position: absolute;
+        /*padding-bottom: 10px;*/
     }
 }
 
@@ -389,7 +390,7 @@ textarea {
 
     footer {
         height: 120px;
-        position: static;
+        position: absolute;
     }
 
 }
@@ -430,7 +431,7 @@ textarea {
 }
 
     footer {
-        height: 100px;
-        position: static;
+        height: 120px;
+        position: absolute;
     }
 }
