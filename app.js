@@ -140,7 +140,30 @@ let idUsuario
     app.post('/tecnico/chamados', async (req, res) => {
       const results = await carregarChamados.carregarChamadoPeloID(req.body.id)
       const tecnicos = await finalizarInformacoes.requisitarTecnicoNomeID()
+
       res.render('finalizar-chamado', ({results: results, tecnicos: tecnicos}))
+    })
+
+    app.post('/tecnico/finalizar-chamado', async (req, res) => {
+      const dataFechamento = finalizarInformacoes.capturarDataHoraLocal()
+      let horas
+      let minutos
+      if(parseInt(req.body.horas) < 10) {
+        horas = '0' + `${req.body.horas}`
+      } else {
+        horas = req.body.horas
+      }
+
+      if(parseInt(req.body.horas) < 10) {
+        minutos = '0' + `${req.body.minutos}`
+      } else {
+        minutos = req.body.minutos
+      }
+
+      const tempoDeRealizacao = `${horas}:${minutos}:00`
+      finalizarInformacoes.concluirChamado(req.body.id, dataFechamento, tempoDeRealizacao, req.body.relatorio)
+
+      res.redirect('/tecnico/chamados')
     })
 
 //Inicialização

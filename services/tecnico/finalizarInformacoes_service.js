@@ -50,6 +50,32 @@ class FinalizarInformacoes {
       })
     })
   }
+  concluirChamado(idChamado, dataFechamento, tempoDeRealizacao, relatorio) {
+    return new Promise((resolve, reject) => {
+      db.conn.query('UPDATE Chamado SET situacao = "Finalizado", dataFechamento = ?, tempoDeRealizacao = ?, relatorio = ? WHERE idChamado = ?',
+      [dataFechamento, tempoDeRealizacao, relatorio, idChamado], 
+      (err, results) => {
+        if(err){
+          reject(err)
+        } 
+      })
+    }) 
+  }
+
+  capturarDataHoraLocal() {
+    let dataHoraAtual = new Date();
+
+    let ano = dataHoraAtual.getFullYear();
+    let mes = String(dataHoraAtual.getMonth() + 1).padStart(2, '0');
+    let dia = String(dataHoraAtual.getDate()).padStart(2, '0');
+    let hora = String(dataHoraAtual.getHours()).padStart(2, '0');
+    let minuto = String(dataHoraAtual.getMinutes()).padStart(2, '0');
+    let segundo = String(dataHoraAtual.getSeconds()).padStart(2, '0');
+
+    let dataHoraSQL = `${ano}-${mes}-${dia} ${hora}:${minuto}:${segundo}`;
+
+    return dataHoraSQL
+  }
 }
 
 module.exports = FinalizarInformacoes

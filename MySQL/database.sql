@@ -49,8 +49,8 @@ create table Chamado (
 primary key (idChamado));
 
 create table tecnico_chamado(
-    idTecnicoChamado int unique auto_increment not null,
-    idChamado int not null, foreign key (idChamado) references Chamado(idChamado),
+	idTecnicoChamado int unique auto_increment not null,
+	idChamado int not null, foreign key (idChamado) references Chamado(idChamado),
     idUsuario int not null, foreign key (idUsuario) references Usuario(idUsuario),
     primary key(idTecnicoChamado)
 );
@@ -68,8 +68,10 @@ CREATE PROCEDURE NotifyPython()
 BEGIN
     DECLARE new_idChamado INT;
     
+    -- Obtém o último idChamado inserido na tabela Chamado
     SELECT MAX(idChamado) INTO new_idChamado FROM Chamado;
     
+    -- Insere um novo registro na tabela Chamado_Notifications
     INSERT INTO Chamado_Notifications (idChamado) VALUES (new_idChamado);
 END//
 
@@ -89,13 +91,23 @@ DELIMITER ;
 insert into Usuario (nome, email, senha, telefone, funcao) values ('Juan Suzarte', 'juan@gmail.com', '#654321', '71999289030', 'GERENTE');
 insert into Usuario (nome, email, senha, telefone, funcao) values ('Samuel Barengo', 'samuel@gmail.com', '#654321', '71999999999', 'PROFESSOR');
 insert into Usuario (nome, email, senha, telefone, funcao) values ('Thiago Santos', 'thiago@gmail.com', '#654321', '+5571992610389', 'TECNICO');
-insert into Usuario (nome, email, senha, telefone, funcao) values ('Rafael Abreu', 'rafael@gmail.com', '#654321', '+5575998510556', 'TECNICO');
 
-insert into Disponibilidade (idUsuario) values (4);
+-- Inserir dados na tabela Endereco
 insert into Disponibilidade (idUsuario) values (3);
 
 insert into Setor (setor) values ('Informática');
 insert into Endereco (bloco, salas) values ('A', 20);
-insert into Aparelho (aparelho, quantidade, idSetor) values ('Computador', 2, 1)
+insert into Aparelho (aparelho, quantidade, idSetor) values ('Computador', 2, 1);
+
+update Disponibilidade SET disponibilidade = 'ATIVO' Where idUsuario = '3';
+update Chamado SET situacao = 'Em Andamento' Where idChamado = '1';
+
+select * from Chamado;
+select * from tecnico_chamado;
+select * from Usuario;
+select * from Chamado_Notifications;
+
+ALTER TABLE Chamado
+ADD COLUMN relatorio VARCHAR(255);
 
 drop database sistemakling;

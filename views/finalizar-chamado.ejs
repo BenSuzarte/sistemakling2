@@ -120,6 +120,8 @@
             <div class="container">
                 <div class="row border">
                     <div class="col-md-5">
+
+                        <input type="hidden" name="id" value="<%= results[0].idChamado %>">
     
                         <div class="form-group">
                             <label for="">
@@ -171,17 +173,21 @@
                                 </label>
                                 <select class="form-control border-dark" id="tecnicos">
                                     <% tecnicos.forEach(result => { %>
-                                        <option name="id" value="<%= result.idUsuario %>"><%= result.nome %></option>
+                                        <option name="idTecnico" value="<%= result.idUsuario %>"><%= result.nome %></option>
                                     <% }); %>
                                 </select>
                             </form>
                         </div>
     
                         <div class="col-md-12 mt-5" style="text-align: center;">
-                                <h5>Data e Hora</h5>
+                                <h5>Tempo de Conclusão</h5>
                                 <div class="row">
                                     <div class="col-md-6 offset-3">
-                                        <input type="time" id="txtHora" name="hora" class="caixa-texto">
+                                        <input type="number" id="txtHora" name="horas" class="caixa-texto" placeholder="Horas">
+                                        <input type="number" id="txtMinutos" name="minutos" class="caixa-texto" placeholder="Minutos">
+                                        <label for="relatorio">Relatório</label>
+                                        <input type="text" name="relatorio" id="relatorio">
+                                        <button type="submit">Concluir chamado</button>
                                     </div>
                                 </div>
                         </div>
