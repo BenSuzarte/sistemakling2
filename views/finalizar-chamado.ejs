@@ -60,7 +60,7 @@
     .centro .container .opcoes {
         text-align: center;
     }
-    
+
     .opcoes h5 {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
@@ -86,7 +86,6 @@
         display: flex;
         justify-content: space-around;
     }
-
 </style>
 
 
@@ -112,53 +111,56 @@
     <form action="/tecnico/finalizar-chamado" method="post">
         <section class="centro">
             <div class="container">
-                <div class="row border">
+                <div class="row">
                     <div class="col-md-5">
 
                         <input type="hidden" name="id" value="<%= results[0].idChamado %>">
-    
+
                         <div class="form-group">
                             <label for="">
                                 <h5>Professor</h5>
                             </label>
-                            <input class="form-control border-dark " type="text" id="tecnico" placeholder="<%= results[0].professor.toUpperCase() %>" disabled>
+                            <input class="form-control border-dark " type="text" id="tecnico"
+                                placeholder="<%= results[0].professor.toUpperCase() %>" disabled>
                         </div>
-    
+
                         <div class="form-group">
                             <label for="">
                                 <h5>Setor</h5>
                             </label>
-                            <input class="form-control border-dark" type="text" id="tecnico" placeholder="<%= results[0].setor.toUpperCase() %>"
-                                disabled>
+                            <input class="form-control border-dark" type="text" id="tecnico"
+                                placeholder="<%= results[0].setor.toUpperCase() %>" disabled>
                         </div>
-    
+
                         <div class="form-group">
                             <label for="">
                                 <h5>Bloco</h5>
                             </label>
-                            <input class="form-control border-dark" type="text" id="tecnico" placeholder="<%= results[0].bloco %>" disabled>
+                            <input class="form-control border-dark" type="text" id="tecnico"
+                                placeholder="<%= results[0].bloco %>" disabled>
                         </div>
-    
+
                         <div class="form-group">
                             <label for="">
                                 <h5>Sala</h5>
                             </label>
-                            <input class="form-control border-dark" type="text" id="tecnico" placeholder="<%= results[0].sala %>" disabled>
+                            <input class="form-control border-dark" type="text" id="tecnico"
+                                placeholder="<%= results[0].sala %>" disabled>
                         </div>
-    
+
                         <div class="form-group">
                             <label for="tecnico">
                                 <h5>Aparelho</h5>
                             </label>
-                            <input class="form-control border-dark" type="text" id="tecnico" placeholder="<%= results[0].aparelho.toUpperCase() %>"
-                                disabled>
+                            <input class="form-control border-dark" type="text" id="tecnico"
+                                placeholder="<%= results[0].aparelho.toUpperCase() %>" disabled>
                         </div>
-    
+
                         <div>
                             <textarea disabled> <%= results[0].descricao %></textarea>
                         </div>
                     </div>
-    
+
                     <div class="col-md-5 offset-2">
                         <div class="opcoes">
                             <form class="form-group">
@@ -166,26 +168,32 @@
                                     <h5>Técnicos</h5>
                                 </label>
                                 <select class="form-control border-dark" id="tecnicos">
-                                    <% tecnicos.forEach(result => { %>
-                                        <option name="idTecnico" value="<%= result.idUsuario %>"><%= result.nome %></option>
-                                    <% }); %>
+                                    <% tecnicos.forEach(result=> { %>
+                                        <option name="idTecnico" value="<%= result.idUsuario %>">
+                                            <%= result.nome %>
+                                        </option>
+                                        <% }); %>
                                 </select>
                             </form>
                         </div>
-    
+
                         <div class="col-md-12 mt-5" style="text-align: center;">
-                                <h5>Tempo de Conclusão</h5>
-                                <div class="row">
-                                    <div class="col-md-6 offset-3">
-                                        <input type="number" id="txtHora" name="horas" class="caixa-texto" placeholder="Horas">
-                                        <input type="number" id="txtMinutos" name="minutos" class="caixa-texto" placeholder="Minutos">
-                                        <label for="relatorio">Relatório</label>
-                                        <input type="text" name="relatorio" id="relatorio">
-                                        <button type="submit">Concluir chamado</button>
-                                    </div>
+                            <h5>Tempo de Conclusão</h5>
+                            <div class="row border">
+
+                                <div class="col-md-6 offset-2 form-group border">
+                                    <input type="number" id="txtHora" name="horas" class="caixa-texto form-control-lg mb-2 mt-2 "
+                                        placeholder="Horas">
+                                    <input type="number" id="txtMinutos" name="minutos" class="caixa-texto form-control-lg "
+                                        placeholder="Minutos">
+                                    <label class="mt-4" for="relatorio"> <h5>Relatório</h5></label>
+                                    <input class="form-control" type="text" name="relatorio" id="relatorio">
+                                    <button class="btn btn-outline-success mt-4" type="submit">Concluir chamado</button>
                                 </div>
+
+                            </div>
                         </div>
-    
+
                     </div>
                 </div>
         </section>
@@ -205,30 +213,30 @@
 
 
 
-<script>
-// -------------- MODAL USER INFO --------------
-// Obter elementos DOM
-const infoModal = document.getElementById('user-modal')
-const btnInfoModal = document.getElementById('btn-info-modal')
-const closeInfoModalBtn = document.getElementsByClassName('close-info')[0]
-      
-// Abrir o modal quando o botão for clicado
-btnInfoModal.addEventListener('click', function() {
-  infoModal.style.display = 'block'
-})
-      
-// Fechar o modal quando o botão de fechar for clicado
-closeInfoModalBtn.addEventListener('click', function() {
-  infoModal.style.display = 'none'
-})
-      
-// Fechar o modal quando o usuário clicar fora da área do modal
-window.addEventListener('click', function(event) {
-  if (event.target === infoModal) {
-    infoModal.style.display = 'none'
-  }
-})
-</script>
+    <script>
+        // -------------- MODAL USER INFO --------------
+        // Obter elementos DOM
+        const infoModal = document.getElementById('user-modal')
+        const btnInfoModal = document.getElementById('btn-info-modal')
+        const closeInfoModalBtn = document.getElementsByClassName('close-info')[0]
+
+        // Abrir o modal quando o botão for clicado
+        btnInfoModal.addEventListener('click', function () {
+            infoModal.style.display = 'block'
+        })
+
+        // Fechar o modal quando o botão de fechar for clicado
+        closeInfoModalBtn.addEventListener('click', function () {
+            infoModal.style.display = 'none'
+        })
+
+        // Fechar o modal quando o usuário clicar fora da área do modal
+        window.addEventListener('click', function (event) {
+            if (event.target === infoModal) {
+                infoModal.style.display = 'none'
+            }
+        })
+    </script>
 
 </body>
 
