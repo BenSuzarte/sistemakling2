@@ -123,7 +123,7 @@
             display: block;
 
         }
-        
+
 
         form {
             margin-top: 270px;
@@ -222,13 +222,15 @@
                     <div class="col-md-5 offset-2" id="coluna">
                         <div class="opcoes">
                             <form class="form-group">
+
                                 <label for="tecnicos">
                                     <h5>Técnicos</h5>
                                 </label>
+
                                 <select class="form-control border-dark" id="tecnicos">
                                     <% tecnicos.forEach(result=> { %>
                                         <option name="idTecnico" value="<%= result.idUsuario %>">
-                                            <%= result.nome %>
+                                            <%= result.nome %> 
                                         </option>
                                         <% }); %>
                                 </select>
@@ -250,8 +252,12 @@
                                         <h5>Relatório</h5>
                                     </label>
                                     <!--<input class="form-control" type="text" name="relatorio" id="relatorio"> -->
-                                    <textarea class="form-group offset-2"></textarea>
-                                    <button class="btn btn-outline-success mt-4 offset-3" type="submit">Concluir
+                                    <div class="form-group">
+                                        <textarea class="from-control" style="width: 260px; height: 110px;"></textarea>
+                                    </div>
+
+                                    <button class="btn btn-block btn-lg btn-outline-success mt-4 offset-2"
+                                        type="submit" style="border: transparent;">Concluir
                                         chamado</button>
                                 </div>
 
