@@ -10,16 +10,16 @@
 </head>
 
 <style>
-.quit {
-  color: #ff0000;
-  font-size: 20px;
-  margin: 5px;
-  margin-left: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-}
+    .quit {
+        color: #ff0000;
+        font-size: 20px;
+        margin: 5px;
+        margin-left: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+    }
 
     .navbar .container .navbar-brand {
         font-size: 33px;
@@ -97,6 +97,52 @@
         display: flex;
         justify-content: space-around;
     }
+
+    /*Extra pequeno dispositivo (telefone retrato, menor que 576px)*/
+    @media (max-width: 575.98px) {
+
+        header .navbar .container #logo {
+            font-size: 25px;
+        }
+
+        header .navbar .container ul h5 {
+            display: flex;
+            font-size: 15px;
+            padding-right: 30px;
+            align-self: center;
+        }
+
+        #coluna .opcoes h5 {
+            margin-top: 25px;
+            margin-right: 7vh;
+        }
+
+        form section input {
+            width: 80%;
+            height: 80px;
+            display: block;
+
+        }
+        
+
+        form {
+            margin-top: 270px;
+        }
+
+
+    }
+
+    /*Pequeno dispositivo (telefone paisagem, 576px e maiores)*/
+    @media (min-width: 576px) and (max-width: 767.98px) {}
+
+    /*Médio dispositivo (tablets, 768px e maiores)*/
+    @media (min-width: 768px) and (max-width: 991.98px) {}
+
+    /*Grande dispositivo (desktops, 992px e maiores)*/
+    @media (min-width: 992px) and (max-width: 1199.98px) {}
+
+    /*Extra grande dispositivo (large desktops, 1200px  e maiores)*/
+    @media (min-width: 1200px) {}
 </style>
 
 
@@ -105,7 +151,7 @@
         <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #4169E1;">
             <div class="container">
 
-                <a class="navbar-brand" href="/tecnico/chamados">KLING</a>
+                <a class="navbar-brand" id="logo" href="/tecnico/chamados">KLING</a>
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -173,7 +219,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-5 offset-2">
+                    <div class="col-md-5 offset-2" id="coluna">
                         <div class="opcoes">
                             <form class="form-group">
                                 <label for="tecnicos">
@@ -191,16 +237,22 @@
 
                         <div class="col-md-12 mt-5" style="text-align: center;">
                             <h5>Tempo de Conclusão</h5>
-                            <div class="row border">
+                            <div class="row ">
 
-                                <div class="col-md-6 offset-2 form-group border">
-                                    <input type="number" id="txtHora" name="horas" class="caixa-texto form-control-lg mb-2 mt-2 "
-                                        placeholder="Horas">
-                                    <input type="number" id="txtMinutos" name="minutos" class="caixa-texto form-control-lg "
-                                        placeholder="Minutos">
-                                    <label class="mt-4" for="relatorio"> <h5>Relatório</h5></label>
-                                    <input class="form-control" type="text" name="relatorio" id="relatorio">
-                                    <button class="btn btn-outline-success mt-4" type="submit">Concluir chamado</button>
+                                <div class="col-md-6 offset-2 form-group ">
+                                    <input type="number" id="txtHora" name="horas"
+                                        class="caixa-texto form-control-lg mb-2 mt-2 " placeholder="Horas">
+
+                                    <input type="number" id="txtMinutos" name="minutos"
+                                        class="caixa-texto form-control-lg " placeholder="Minutos">
+
+                                    <label class="mt-4 offset-3" for="relatorio">
+                                        <h5>Relatório</h5>
+                                    </label>
+                                    <!--<input class="form-control" type="text" name="relatorio" id="relatorio"> -->
+                                    <textarea class="form-group offset-2"></textarea>
+                                    <button class="btn btn-outline-success mt-4 offset-3" type="submit">Concluir
+                                        chamado</button>
                                 </div>
 
                             </div>
