@@ -34,11 +34,12 @@
           <div class="text-chamado">
             <span class="titulo"><%= result.idAparelho.toUpperCase() %>: CHAMADA NO BLOCO <%= result.idEndereco %>, SALA <%= result.sala %></span>
           </div>
-          <a class="detalhar-pendente" href="#">Leia mais...</a>
-          <span class="detalhamento-pendente">
+          <a class="detalhar" href="#">Leia mais...</a>
+          <span class="detalhamento">
             <p>Descrição: <%= result.descricao %></p>
           </span>
         </div>
+        
       <% }); %>
     
     </div>
@@ -60,8 +61,8 @@
 <script>
 //       Detalhar
 // Obter elementos DOM
-const details = document.getElementsByClassName('detalhar-pendente')
-const detalhamento = document.getElementsByClassName('detalhamento-pendente')
+const details = document.getElementsByClassName('detalhar')
+const detalhamento = document.getElementsByClassName('detalhamento')
 
 for (let i = 0; i < details.length; i++) {
   details[i].addEventListener('click', function(event) {

@@ -60,11 +60,11 @@ section h2 {
 }
 
 /* Estilos para a classe .detalhe */
-.detalhar-pendente, .detalhar-concluido {
+.detalhar, .detalhar-pendente, .detalhar-concluido {
     color: #000;
 }
 
-.detalhamento-pendente, .detalhamento-concluido {
+.detalhar, .detalhamento-pendente, .detalhamento-concluido {
     display: none;
     font-size: 20px;
 }
@@ -109,7 +109,7 @@ section h2 {
 
     .detalhamento {
         display: block;
-        font-size: 12px;
+        font-size: 14px;
     }
 
 }
@@ -124,4 +124,13 @@ section h2 {
 @media (min-width: 992px) and (max-width: 1199.98px) {}
 
 /*Extra grande dispositivo (large desktops, 1200px  e maiores)*/
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+    .detalhar {
+        display: block;
+    }
+
+    .detalhamento {
+        display: none;
+        font-size: 18px;
+    }
+}
