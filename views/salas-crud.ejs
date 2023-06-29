@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/CRUD.css">
-  <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />  <script src="https://kit.fontawesome.com/108281d3fc.js" crossorigin="anonymous"></script>
   <title>Relação de salas</title>
 </head>
 
@@ -19,7 +17,7 @@
       <li><a href="/gerente/index">Chamados</a></li>
       <li><a href="/gerente/usuarios">Cadastros</a></li>
       <li><a href="/gerente/salas">Salas</a></li>
-      <li><button class="material-symbols-outlined" id="btn-info-modal">account_circle</button></li>
+      <li><button class="quit">Sair</button></li>
     </ul>
   </nav>
 </header>
@@ -27,6 +25,21 @@
 <main>
   <h1>Salas</h1>
 
+  <form class="CRUD">
+    <div class="div-form" style="background-color: #f2f2f2;">
+      <label for="area">Área</label>
+      <select name="funcao">
+        <option value="PROFESSOR">Administração</option>
+      </select>
+
+      <label for="block">Bloco</label>
+      <input name="block" type="text" required />
+
+      <label for="class">Sala</label>
+      <input name="class" type="tel" required>
+      <button type="submit" id="btnSalvar" class="addCRUD">Cadastrar novo usuário</button>
+    </div>
+  </form>
   <div class="CRUD">
     <table id="registros">
 
@@ -34,10 +47,8 @@
         <th>Área</th>
         <th>Bloco</th>
         <th>Sala</th>
-        <th>
-          <!-- Ao gerente clicar nesse botão, gerará uma nova linha na tabela, onde ele irá inserir os dados da nova sala -->
-          <button onclick="novaSala()" class="addCRUD">Adicionar Sala</button>
-        </th>
+        <th>Editar</th>
+        <th>Excluir</th>
       </tr>
 
       <tr>
@@ -45,9 +56,9 @@
         <td>A</td>
         <td>2</td>
         <td>
-          <!-- Ao gerente clicar nesse botão, ele poderá alterar os dados daquela sala em específico-->
-          <button onclick="editSala(this.parentNode.parentNode.rowIndex)" class="editCRUD">Editar</button>
-          <!-- Botão para excluir sala -->
+          <button class="editCRUD">Editar</button>
+        </td>
+        <td>
           <button class="deleteCRUD">Excluir</button>
         </td>
       </tr>
@@ -67,43 +78,5 @@
     </li>
   </ul>
 </footer>
-
-<!-- Modal Info -->
-<div id="user-modal" class="info-modal">
-  <div class="info-modal-content">
-    <span class="close-info">&times;</span>
-    <i class="fa-regular fa-circle-user fa-5x"></i>
-    <h2>Informações do Usuário</h2>
-    <p>Nome: Rafael Abreu</p>
-    <p>Email: kling@example.com</p>
-    <p>Telefone: 71</p>
-    <button class="quit">Sair</button>
-  </div>
-</div>
-
-<script>
-// -------------- MODAL USER INFO --------------
-// Obter elementos DOM
-const infoModal = document.getElementById('user-modal')
-const btnInfoModal = document.getElementById('btn-info-modal')
-const closeInfoModalBtn = document.getElementsByClassName('close-info')[0]
-      
-// Abrir o modal quando o botão for clicado
-btnInfoModal.addEventListener('click', function() {
-  infoModal.style.display = 'block'
-})
-      
-// Fechar o modal quando o botão de fechar for clicado
-closeInfoModalBtn.addEventListener('click', function() {
-  infoModal.style.display = 'none'
-})
-      
-// Fechar o modal quando o usuário clicar fora da área do modal
-window.addEventListener('click', function(event) {
-  if (event.target === infoModal) {
-    infoModal.style.display = 'none'
-  }
-})
-</script>
-  </body>
+</body>
 </html>

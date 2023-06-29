@@ -161,9 +161,11 @@ footer ul {
 .quit {
   color: #ff0000;
   font-size: 24px;
+  margin-top: 3px;
   font-weight: bold;
-  cursor: pointer; 
+  cursor: pointer;
   border: none;
+  margin-top: -3px;
   background-color: transparent;
 }
 
