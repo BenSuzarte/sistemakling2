@@ -53,11 +53,9 @@ class FinalizarInformacoes {
   concluirChamado(idUsuario, idChamado, dataFechamento, tempoDeRealizacao, relatorio) {
     return new Promise((resolve, reject) => {
       db.conn.query('UPDATE Chamado SET situacao = "Finalizado", dataFechamento = ?, tempoDeRealizacao = ?, relatorio = ?, idTecnicoFinalizado = ? WHERE idChamado = ?',
-      [dataFechamento, tempoDeRealizacao, relatorio, idUsuario, idChamado], 
-      (err, results) => {
-        if(err){
-          reject(err)
-        } 
+      [dataFechamento, tempoDeRealizacao, relatorio, idUsuario, idChamado],
+      () => {
+        db.conn.query('UPDATE Disponibilidade SET disponibilidade = "ATIVO" WHERE idUsuario = ?', [idUsuario])
       })
     }) 
   }
