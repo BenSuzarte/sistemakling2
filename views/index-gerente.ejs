@@ -34,51 +34,56 @@
     <!-- Aqui será apresentado todos os chamados abertos -->
     <div class="screen-chamados">
       <h2>Chamados Abertos</h2>
-      <div class="chamado">
-        <div class="text-chamado">
-          <span class="titulo">COMPUTADOR: CHAMADA NO BLOCO A, SALA 03</span>
+      
+      <% results.forEach(function(result) { %>
+        <div class="chamado">
+          <div class="text-chamado">
+            <span class="titulo"><%= result.idAparelho.toUpperCase() %>: CHAMADA NO BLOCO <%= result.idEndereco %>, SALA <%= result.sala %></span>
+          </div>
+          <a class="detalhar" href="#">Leia mais...</a>
+          <span class="detalhamento">
+            <p>Descrição: <%= result.descricao %></p>
+          </span>
         </div>
-        <a class="detalhar-pendente" href="#">Leia mais...</a>
-        <span class="detalhamento-pendente">
-          <p>detalhamento: detalhes...</p>
-        </span>
-      </div>
+      <% }); %>
+
     </div>
     
     <div class="screen-chamados">
       <!-- Aqui será apresentado todos os chamados concluidos -->
       <h2>Chamados Concluidos</h2>
-
-      <div class="chamado">
-        <div class="text-chamado">
-          <span>COMPUTADOR: CHAMADA NO BLOCO A, SALA 03</span>
+      <% concluidos.forEach(function(result) { %>
+        <div class="chamado">
+          <div class="text-chamado">
+            <span><%= result.idAparelho.toUpperCase() %>: CHAMADA NO BLOCO <%= result.idEndereco %>, SALA <%= result.sala %></span>
+          </div>
+          <a class="detalhar-concluido" href="#">Leia mais...</a>
+  
+          <div class="detalhamento-concluido">
+            <div>
+              <p>Docente solicitante: <%= result.nomeProfessor %></p>
+            </div>
+            <div>
+              <p>Técnico responsável: <%= result.nomeTecnico %></p>
+            </div>
+            <div>
+              <p>Data Início: <%= result.dataCriacao %></p>
+            </div>
+            <div>
+              <p>Data Conclusão: <%= result.dataFechamento %> </p>
+            </div>
+            <div>
+              <p>Tempo gasto: <%= result.tempoDeRealizacao %></p>
+            </div>
+            <div>
+              <p>detalhamento: <%= result.descricao %></p>
+            </div>
+  
+          </div>
         </div>
-        <a class="detalhar-concluido" href="#">Leia mais...</a>
-
-        <div class="detalhamento-concluido">
-          <div>
-            <p>Docente solicitante:</p>
-          </div>
-          <div>
-            <p>Técnico responsável: </p>
-          </div>
-          <div>
-            <p>Data Início:</p>
-          </div>
-          <div>
-            <p>Data Conclusão:</p>
-          </div>
-          <div>
-            <p>Tempo gasto:</p>
-          </div>
-          <div>
-            <p>detalhamento: detalhes...</p>
-          </div>
-
-        </div>
-      </div>
-
+      <% }); %>
     </div>
+
 
   </section>  
     <!--<button href="/" class='relatorio'>Relatórios</button> -->

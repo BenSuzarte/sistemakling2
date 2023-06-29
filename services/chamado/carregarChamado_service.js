@@ -1,4 +1,5 @@
 const db = require('../../connection/database')
+const moment = require('moment');
 
 class CarregarChamados {
   carregarChamados(idUsuario) {
@@ -17,6 +18,38 @@ class CarregarChamados {
         }
       })
     })
+  }
+
+  carregarChamadosConcluidos() {
+    return new Promise((resolve, reject) => {
+      db.conn.query('SELECT idAparelho, dataCriacao, dataFechamento, tempoDeRealizacao, idUsuario, idTecnicoFinalizado, idEndereco, sala, descricao FROM Chamado WHERE situacao = "Finalizado"',
+      async (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          const promises = results.map(async (result) => {
+            result.idAparelho = await this.requisitarNomeDoAparelho(result.idAparelho);
+            result.idEndereco = await this.requisitarNomeDoBloco(result.idEndereco);
+            result['nomeProfessor'] = await this.requisitarNomeDoUsuario(result.idUsuario);
+            result['nomeTecnico'] = await this.requisitarNomeDoUsuario(result.idTecnicoFinalizado);
+
+            result.tempoDeRealizacao = result.tempoDeRealizacao;
+            result.dataCriacao = moment(result.dataCriacao).format('DD/MM/YY');
+            result.dataFechamento = moment(result.dataFechamento).format('DD/MM/YY');
+
+            return result;
+          });
+  
+          Promise.all(promises)
+            .then((updatedResults) => {
+              resolve(updatedResults);
+            })
+            .catch((error) => {
+              reject(error);
+            });
+        }
+      });
+    });
   }
 
   requisitarNomeDoAparelho(idAparelho) {
@@ -47,7 +80,7 @@ class CarregarChamados {
     })
   }
 
-  requisitarNomeDoProfessor(idUsuario) {
+  requisitarNomeDoUsuario(idUsuario) {
     return new Promise((resolve, reject) => {
       db.conn.query('SELECT nome FROM Usuario WHERE idUsuario = ?', [idUsuario],
       (err, results) => {
@@ -105,7 +138,7 @@ class CarregarChamados {
           for(let i=0; i<results.length; i++) {
             let aparelho = await this.requisitarNomeDoAparelho(results[i].idAparelho)
             let bloco = await this.requisitarNomeDoBloco(results[i].idEndereco)
-            let professor = await this.requisitarNomeDoProfessor(results[i].idUsuario)
+            let professor = await this.requisitarNomeDoUsuario(results[i].idUsuario)
             let setor = await this.requisitarNomeDoSetor(results[i].idSetor)
   
             results[i]['aparelho'] = aparelho
